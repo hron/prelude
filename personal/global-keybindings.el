@@ -1,0 +1,5 @@
+(global-unset-key (kbd "C-x p"))
+(global-unset-key (kbd "C-x M-m"))
+(global-set-key (kbd "C-x m") 'shell)
+(global-set-key [f5] 'shell)
+(global-unset-key [f12])

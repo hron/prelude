@@ -1,7 +1,7 @@
 (cua-mode +1)
 (global-set-key (kbd "C-y") 'undo-tree-redo)
 
-(global-set-key (kbd "M-<down>") 'ace-window)
+(global-set-key (kbd "M-<down>") 'other-window)
 (global-unset-key (kbd "C-x O"))
 (global-set-key (kbd "M-<up>") (lambda () (interactive) (other-window -1)))
 
@@ -9,3 +9,28 @@
 (global-unset-key (kbd "S-<right>"))
 (global-unset-key (kbd "S-<left>"))
 (global-unset-key (kbd "S-<down>"))
+
+(add-hook 'dired-mode-hook 'diff-hl-dired-mode)
+
+(setq x-select-enable-clipboard t)
+(setq select-active-regions nil)
+
+;; (setq sp-keymap (make-sparse-keymap))
+;; (setq sp-base-key-bindings 'smartparens)
+;; (sp-use-smartparens-bindings)
+(setq sp-override-key-bindings '(("M-s" . nil)
+                                 ("M-<up>" . nil)
+                                 ("M-<down>" . nil)
+                                 ("M-r" . nil)
+                                 ("C-)" . nil)
+                                 ("C-<right>" . nil)
+                                 ("C-}" . nil)
+                                 ("C-<left>" . nil)
+                                 ("C-(" . nil)
+                                 ("C-M-<left>" . nil)
+                                 ("C-{" . nil)
+                                 ("C-M-<right>" . nil)
+                                 ("M-S" . nil)
+                                 ("S-<space>" . nil)
+                                 ))
+(sp--update-override-key-bindings)

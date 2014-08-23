@@ -3,3 +3,5 @@
 (global-set-key (kbd "C-x m") 'shell)
 (global-set-key [f5] 'shell)
 (global-unset-key [f12])
+(global-set-key [f11] 'magit-status)
+(global-set-key (kbd "C-<backspace>") 'backward-kill-word)

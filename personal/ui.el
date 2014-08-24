@@ -10,3 +10,5 @@
 (load-theme 'solarized-light t)
 
 (setq-default left-fringe-width 7)
+
+(setq use-dialog-box nil)

@@ -46,3 +46,5 @@
 (setq-default ediff-window-setup-function 'ediff-setup-windows-plain)
 
 (setq shell-prompt-pattern "^.*[#$%>] *")
+
+(setq magit-status-buffer-switch-function 'switch-to-buffer)

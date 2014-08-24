@@ -12,8 +12,18 @@
 (global-set-key [f2] 'winner-undo)
 (global-set-key [f3] 'winner-redo)
 
-(global-set-key (kbd "C-x k") (lambda () 
-                                (interactive)
-                                (kill-buffer (buffer-name))))
+(global-set-key "\C-xk" 'kill-this-buffer)
 
 (global-set-key (kbd "C-c D") 'prelude-delete-file-and-buffer)
+
+(global-set-key [f9] '(lambda (command &optional comint)
+			(interactive
+                         (list
+                          (let ((command (eval compile-command)))
+                            (if (or compilation-read-command current-prefix-arg)
+				(compilation-read-command command)
+                              command))
+                          (consp current-prefix-arg)))
+			(setq comint (not comint))
+			(compile command comint)))
+

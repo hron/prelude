@@ -34,3 +34,15 @@
                                  ("S-<space>" . nil)
                                  ))
 (sp--update-override-key-bindings)
+
+(add-hook 'shell-mode-hook 'compilation-shell-minor-mode)
+
+(setq set-mark-command-repeat-pop t)
+
+(setq browse-url-generic-program "xdg-open")
+(setq browse-url-browser-function 'browse-url-generic)
+(setq browse-url-new-window-flag 1)
+
+(setq-default ediff-window-setup-function 'ediff-setup-windows-plain)
+
+(setq shell-prompt-pattern "^.*[#$%>] *")

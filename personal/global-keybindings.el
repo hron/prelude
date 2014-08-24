@@ -12,3 +12,6 @@
 (global-set-key [f2] 'winner-undo)
 (global-set-key [f3] 'winner-redo)
 
+(global-set-key (kbd "C-x k") (lambda () 
+                                (interactive)
+                                (kill-buffer (buffer-name))))

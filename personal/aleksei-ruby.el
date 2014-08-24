@@ -49,5 +49,10 @@
       (shell-cd dir)
       (comint-send-string buffer (concat "cd " dir "; " command "\n")))))
 
+(prelude-require-package 'projectile-rails)
+(add-hook 'projectile-mode-hook 'projectile-rails-on)
+(setq projectile-rails-keymap-prefix (kbd "C-c l"))
+
+
 (provide 'aleksei-ruby)
 ;;; aleksei-ruby.el ends here

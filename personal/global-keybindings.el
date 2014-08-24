@@ -15,3 +15,5 @@
 (global-set-key (kbd "C-x k") (lambda () 
                                 (interactive)
                                 (kill-buffer (buffer-name))))
+
+(global-set-key (kbd "C-c D") 'prelude-delete-file-and-buffer)

@@ -7,6 +7,7 @@
 
 (disable-theme 'zenburn)
 (prelude-require-package 'solarized-theme)
+(setq solarized-high-contrast-mode-line 't)
 (load-theme 'solarized-light t)
 
 (setq-default left-fringe-width 7)

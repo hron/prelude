@@ -71,3 +71,27 @@
         ))
 (setq comint-scroll-to-bottom-on-output 'others)
 (add-hook 'compilation-mode-hook '(lambda () (local-set-key "\C-cg" 'ag)))
+
+(require 'desktop)
+(setq desktop-globals-to-save
+      (append '((extended-command-history . 30)
+                (file-name-history        . 100)
+                (ido-last-directory-list  . 100)
+                (ido-work-directory-list  . 100)
+                (ido-work-file-list       . 100)
+                (grep-history             . 30)
+                (compile-history          . 30)
+                (minibuffer-history       . 50)
+                (query-replace-history    . 60)
+                (read-expression-history  . 60)
+                (regexp-history           . 60)
+                (regexp-search-ring       . 20)
+                (search-ring              . 20)
+                (shell-command-history    . 50)
+                tags-file-name
+                register-alist)))
+(add-hook 'desktop-before-save-hook 'clean-buffer-list)
+(setq-default desktop-path '("." "~/.emacs.d"))
+(setq desktop-save 'ask-if-new)
+(desktop-save-mode 1)
+

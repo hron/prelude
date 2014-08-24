@@ -31,6 +31,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "#fdf6e3" :foreground "#657b83" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "unknown" :family "Ubuntu Mono"))))
+ '(isearch ((t (:background "#93a1a1" :foreground "#fdf6e3" :box (:line-width 1 :color "black" :style released-button) :weight normal))))
+ '(lazy-highlight ((t (:background "#fdf6e3" :foreground "#657b83" :box (:line-width 1 :color "black" :style released-button) :weight normal))))
  '(mode-line ((t (:box (:line-width -1 :style released-button) :background "#eee8d5" :foreground "#657b83"))))
  '(mode-line-inactive ((t (:inherit mode-line :background "#fdf6e3" :foreground "#93a1a1" :box (:line-width -1 :style released-button) :weight light))))
  '(variable-pitch ((t (:family "Ubuntu")))))

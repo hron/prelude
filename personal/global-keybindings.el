@@ -27,3 +27,11 @@
 			(setq comint (not comint))
 			(compile command comint)))
 
+(defun gusev-clear-shell ()
+  (interactive)
+  (let ((comint-buffer-maximum-size 0))
+    (comint-truncate-buffer)))
+
+(add-hook 'shell-mode-hook
+          '(lambda ()
+             (local-set-key (kbd "C-M-x") 'gusev-clear-shell)))

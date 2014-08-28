@@ -35,3 +35,7 @@
 (add-hook 'shell-mode-hook
           '(lambda ()
              (local-set-key (kbd "C-M-x") 'gusev-clear-shell)))
+
+(global-set-key (kbd "C-s") 'save-buffer)
+(global-set-key (kbd "C-S-s") 'save-some-buffers)
+(global-set-key (kbd "C-f") 'isearch-forward)

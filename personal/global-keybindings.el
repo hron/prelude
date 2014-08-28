@@ -38,4 +38,7 @@
 
 (global-set-key (kbd "C-s") 'save-buffer)
 (global-set-key (kbd "C-S-s") 'save-some-buffers)
+
 (global-set-key (kbd "C-f") 'isearch-forward)
+(define-key isearch-mode-map (kbd "RET") 'isearch-repeat-forward)
+(define-key isearch-mode-map (kbd "C-v") 'isearch-yank-pop)

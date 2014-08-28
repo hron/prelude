@@ -130,4 +130,6 @@ by Prelude.")
  ;; greet the use with some useful tip
  (run-at-time 5 nil 'prelude-tip-of-the-day))
 
+(put 'scroll-left 'disabled nil)
 ;;; init.el ends here
+

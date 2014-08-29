@@ -32,8 +32,9 @@
 
 (require 'prelude-packages)
 
-(prelude-require-package 'robe)
-(add-hook 'ruby-mode-hook 'robe-mode)
+;; (prelude-require-package 'robe)
+;; (add-hook 'ruby-mode-hook 'robe-mode)
+;; (setq robe-turn-on-eldoc nil)
 
 (defun guard (dir)
   "*Run guard in DIR."
@@ -53,6 +54,10 @@
 (add-hook 'projectile-mode-hook 'projectile-rails-on)
 (setq projectile-rails-keymap-prefix (kbd "C-c l"))
 
+(setq ruby-deep-indent-paren '(?\( t))
 
+(add-hook 'ruby-mode-hook (lambda ()
+                            (interactive)
+                            (eldoc-mode -1)))
 (provide 'aleksei-ruby)
 ;;; aleksei-ruby.el ends here

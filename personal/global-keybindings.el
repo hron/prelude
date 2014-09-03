@@ -9,6 +9,7 @@
 (global-set-key (kbd "C-c g") 'ag)
 (global-set-key (kbd "S-SPC") 'helm-prelude)
 (global-set-key [f6] 'toggle-truncate-lines)
+(global-set-key [f1] 'yari-helm)
 (global-set-key [f2] 'winner-undo)
 (global-set-key [f3] 'winner-redo)
 

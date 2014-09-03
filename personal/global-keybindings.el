@@ -42,3 +42,5 @@
 (global-set-key (kbd "C-f") 'isearch-forward)
 (define-key isearch-mode-map (kbd "RET") 'isearch-repeat-forward)
 (define-key isearch-mode-map (kbd "C-v") 'isearch-yank-pop)
+
+(global-set-key (kbd "C-w") 'kill-this-buffer)

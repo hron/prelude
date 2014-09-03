@@ -95,3 +95,9 @@
 (setq desktop-save 'ask-if-new)
 (desktop-save-mode 1)
 
+(electric-indent-mode)
+(setq truncate-lines t)
+
+(setq company-idle-delay nil)
+(setq prelude-auto-save nil)
+(add-hook 'markdown-mode-hook 'turn-on-visual-line-mode)

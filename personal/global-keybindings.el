@@ -45,3 +45,4 @@
 (define-key isearch-mode-map (kbd "C-v") 'isearch-yank-pop)
 
 (global-set-key (kbd "C-w") 'kill-this-buffer)
+(global-set-key (kbd "C-b") 'ido-switch-buffer)

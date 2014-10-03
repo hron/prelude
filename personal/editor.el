@@ -70,9 +70,13 @@
         gcc-include
         ))
 (setq comint-scroll-to-bottom-on-output 'others)
+;; for zsh extended history...
+(setq comint-input-ring-separator "\\(\n\\|:[[:space:]]+[[:digit:]]+:[[:digit:]]+;\\)")
 (add-hook 'compilation-mode-hook '(lambda () (local-set-key "\C-cg" 'ag)))
 
 (require 'desktop)
+(add-to-list 'desktop-minor-mode-table
+             '(electric-indent-mode nil))
 (setq desktop-globals-to-save
       (append '((extended-command-history . 30)
                 (file-name-history        . 100)
@@ -96,7 +100,7 @@
 (desktop-save-mode 1)
 
 (electric-indent-mode)
-(setq truncate-lines t)
+(setq-default truncate-lines t)
 
 (setq company-idle-delay nil)
 (setq prelude-auto-save nil)

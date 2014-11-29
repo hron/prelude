@@ -75,8 +75,6 @@
 (add-hook 'compilation-mode-hook '(lambda () (local-set-key "\C-cg" 'ag)))
 
 (require 'desktop)
-(add-to-list 'desktop-minor-mode-table
-             '(electric-indent-mode nil))
 (setq desktop-globals-to-save
       (append '((extended-command-history . 30)
                 (file-name-history        . 100)
@@ -99,9 +97,11 @@
 (setq desktop-save 'ask-if-new)
 (desktop-save-mode 1)
 
-(electric-indent-mode)
+(electric-indent-mode +1)
 (setq-default truncate-lines t)
 
 (setq company-idle-delay nil)
 (setq prelude-auto-save nil)
 (add-hook 'markdown-mode-hook 'turn-on-visual-line-mode)
+
+(setq comment-empty-lines t)

@@ -98,6 +98,10 @@
 (desktop-save-mode 1)
 
 (electric-indent-mode +1)
+;; Turn off electric indent in haml mode
+(add-hook 'haml-mode-hook
+          (lambda () (set (make-local-variable 'electric-indent-mode) nil)))
+
 (setq-default truncate-lines t)
 
 (setq company-idle-delay nil)
@@ -105,3 +109,4 @@
 (add-hook 'markdown-mode-hook 'turn-on-visual-line-mode)
 
 (setq comment-empty-lines t)
+

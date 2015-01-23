@@ -17,7 +17,7 @@
  '(magit-diff-use-overlays nil)
  '(magit-use-overlays nil)
  '(prelude-whitespace nil)
- '(safe-local-variable-values (quote ((eval when (fboundp (quote rainbow-mode)) (rainbow-mode 1)) (eval font-lock-add-keywords nil (\` (((\, (concat "(" (regexp-opt (quote ("sp-do-move-op" "sp-do-move-cl" "sp-do-put-op" "sp-do-put-cl" "sp-do-del-op" "sp-do-del-cl")) t) "\\_>")) 1 (quote font-lock-variable-name-face))))) (eval when (require (quote rainbow-mode) nil t) (rainbow-mode 1)))))
+ '(safe-local-variable-values (quote ((encoding . utf-8) (ruby-test-implementation-filename-mapping ("\\(.*\\)\\(test/unit/gateways/\\)\\(.*\\)\\([^/]*\\)\\(_test\\)\\(\\.rb\\)$" "\\1lib/active_merchant/billing/gateways/\\3\\4\\6")) (ruby-test-specification-filename-mapping ("\\(.*\\)\\(lib/active_merchant/billing/gateways/\\)\\(.*\\)\\(\\.rb\\)$" "\\1test/unit/gateways/\\3_test\\4")) (eval when (fboundp (quote rainbow-mode)) (rainbow-mode 1)) (eval font-lock-add-keywords nil (\` (((\, (concat "(" (regexp-opt (quote ("sp-do-move-op" "sp-do-move-cl" "sp-do-put-op" "sp-do-put-cl" "sp-do-del-op" "sp-do-del-cl")) t) "\\_>")) 1 (quote font-lock-variable-name-face))))) (eval when (require (quote rainbow-mode) nil t) (rainbow-mode 1)))))
  '(sp-base-key-bindings nil)
  '(term-default-bg-color "#fdf6e3")
  '(term-default-fg-color "#657b83")

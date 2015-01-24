@@ -6,7 +6,7 @@
 (global-set-key [f11] 'magit-status)
 (global-set-key (kbd "C-<backspace>") 'backward-kill-word)
 (global-set-key [remap other-window] 'other-window)
-(global-set-key (kbd "C-c g") 'ag)
+(global-set-key (kbd "C-c g") 'helm-ag)
 (global-set-key (kbd "S-SPC") 'helm-projectile)
 (global-set-key [f6] 'toggle-truncate-lines)
 (global-set-key [f1] 'yari-helm)
@@ -46,3 +46,4 @@
 
 (global-set-key (kbd "C-w") 'kill-this-buffer)
 (global-set-key (kbd "C-b") 'helm-buffers-list)
+

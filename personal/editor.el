@@ -111,3 +111,13 @@
 
 (setq comment-empty-lines t)
 
+(when (executable-find "ack-grep")
+  (setq helm-grep-default-command "ack-grep -Hn --no-group --no-color %e %p %f"
+        helm-grep-default-recurse-command "ack-grep -H --no-group --no-color %e %p %f"))
+
+(when (executable-find "ag")
+  (setq helm-grep-default-command "ag --nocolor --nogroup %p %f"
+        helm-grep-default-recurse-command "ag --nocolor --nogroup %p %f"))
+
+(setq helm-semantic-fuzzy-match t
+      helm-imenu-fuzzy-match    t)

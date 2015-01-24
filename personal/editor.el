@@ -103,6 +103,7 @@
           (lambda () (set (make-local-variable 'electric-indent-mode) nil)))
 
 (setq-default truncate-lines t)
+(setq helm-truncate-lines t)
 
 (setq company-idle-delay nil)
 (setq prelude-auto-save nil)

@@ -32,6 +32,7 @@
                                  ("C-M-<right>" . nil)
                                  ("M-S" . nil)
                                  ("S-<space>" . nil)
+                                 ("M-DEL" . sp-unwrap-sexp)
                                  ))
 (sp--update-override-key-bindings)
 
@@ -115,9 +116,9 @@
   (setq helm-grep-default-command "ack-grep -Hn --no-group --no-color %e %p %f"
         helm-grep-default-recurse-command "ack-grep -H --no-group --no-color %e %p %f"))
 
-(when (executable-find "ag")
-  (setq helm-grep-default-command "ag --nocolor --nogroup %p %f"
-        helm-grep-default-recurse-command "ag --nocolor --nogroup %p %f"))
+;; (when (executable-find "ag")
+;;   (setq helm-grep-default-command "ag --nocolor --nogroup %p %f"
+;;         helm-grep-default-recurse-command "ag --nocolor --nogroup %p %f"))
 
 (setq helm-semantic-fuzzy-match t
       helm-imenu-fuzzy-match    t)
@@ -126,3 +127,7 @@
 (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
 (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
 
+(eval-after-load 'helm-files
+  (progn
+    (define-key helm-find-files-map (kbd "C-<backspace>") nil)
+    (define-key helm-read-file-map (kbd "C-<backspace>") nil)))

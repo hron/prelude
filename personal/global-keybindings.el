@@ -8,6 +8,7 @@
 (global-set-key [remap other-window] 'other-window)
 (global-set-key (kbd "C-c g") 'helm-ag)
 (global-set-key (kbd "S-SPC") 'helm-projectile)
+(global-set-key (kbd "S-M-SPC") 'helm-resume)
 (global-set-key [f6] 'toggle-truncate-lines)
 (global-set-key [f1] 'yari-helm)
 (global-set-key [f2] 'winner-undo)
@@ -46,4 +47,6 @@
 
 (global-set-key (kbd "C-w") 'kill-this-buffer)
 (global-set-key (kbd "C-b") 'helm-mini)
+
+
 

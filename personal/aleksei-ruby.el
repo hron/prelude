@@ -39,10 +39,11 @@
 (defun guard (dir)
   "*Run guard in DIR."
   (interactive "DDirectory with Guardfile: ")
-  (when (file-exists-p (concat dir "Guardfile"))
-    (let* ((buffer-name (concat "*guard*<" dir ">"))
-           (command "resetrails; bundle exec guard"))
-      (gusev-shell-run dir command buffer-name))))
+  (if (file-exists-p (concat dir "/Guardfile"))
+      (let* ((buffer-name (concat "*guard*<" dir ">"))
+             (command "resetrails; bundle exec guard"))
+        (gusev-shell-run dir command buffer-name))
+    (message (concat "Can't find Guardfile inside " dir))))
 
 (defun gusev-shell-run (dir command buffer-name)
   (let* ((buffer (shell buffer-name)))

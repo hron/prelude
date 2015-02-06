@@ -131,3 +131,7 @@
   (progn
     (define-key helm-find-files-map (kbd "C-<backspace>") nil)
     (define-key helm-read-file-map (kbd "C-<backspace>") nil)))
+
+(eval-after-load 'helm-projectile
+  (progn
+    (define-key helm-projectile-find-file-map (kbd "C-<backspace>") nil)))

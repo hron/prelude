@@ -60,5 +60,11 @@
 (add-hook 'ruby-mode-hook (lambda ()
                             (interactive)
                             (eldoc-mode -1)))
+
+(defun ag-set-inf-ruby-buffer-to-current ()
+  "Sets `inf-ruby-buffer' variable to current buffer"
+  (interactive)
+  (setq inf-ruby-buffer (buffer-name (current-buffer))))
+
 (provide 'aleksei-ruby)
 ;;; aleksei-ruby.el ends here

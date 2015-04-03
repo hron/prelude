@@ -135,3 +135,10 @@
 (eval-after-load 'helm-projectile
   (progn
     (define-key helm-projectile-find-file-map (kbd "C-<backspace>") nil)))
+
+;; Magit rebinds global keys, so we have to workaround this by making
+;; local key bindings.
+(add-hook 'magit-mode-hook
+          '(lambda ()
+             (local-set-key (kbd "C-w") 'kill-this-buffer)
+             (local-set-key (kbd "S-SPC") 'helm-projectile)))

@@ -66,8 +66,5 @@
   (interactive)
   (setq inf-ruby-buffer (buffer-name (current-buffer))))
 
-(prelude-require-package 'robe)
-(add-hook 'ruby-mode-hook 'robe-mode)
-
 (provide 'aleksei-ruby)
 ;;; aleksei-ruby.el ends here

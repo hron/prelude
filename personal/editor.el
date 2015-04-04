@@ -142,3 +142,5 @@
           '(lambda ()
              (local-set-key (kbd "C-w") 'kill-this-buffer)
              (local-set-key (kbd "S-SPC") 'helm-projectile)))
+
+(define-key isearch-mode-map "\C-f" 'isearch-repeat-forward)

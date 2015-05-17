@@ -66,5 +66,39 @@
   (interactive)
   (setq inf-ruby-buffer (buffer-name (current-buffer))))
 
+;; Monkey patch to avoid binding changing when sending region for
+;; eval. I usually run pry with binding is already configured, so
+;; inf-ruby ruins this workflow.
+(eval-after-load 'inf-ruby
+  '(defun ruby-send-region (start end)
+     "Send the current region to the inferior Ruby process."
+     (interactive "r")
+     (let (term (file (or buffer-file-name (buffer-name))) line)
+       (save-excursion
+         (save-restriction
+           (widen)
+           (goto-char start)
+           (setq line (+ start (forward-line (- start)) 1))
+           (goto-char start)
+           (while (progn
+                    (setq term (apply 'format ruby-send-terminator (random) (current-time)))
+                    (re-search-forward (concat "^" (regexp-quote term) "$") end t)))))
+       ;; compilation-parse-errors parses from second line.
+       (save-excursion
+         (let ((m (process-mark (inf-ruby-proc))))
+           (set-buffer (marker-buffer m))
+           (goto-char m)
+           (insert ruby-eval-separator "\n")
+           (set-marker m (point))))
+       ;; (comint-send-string (inf-ruby-proc) (format "eval <<'%s', %s, %S, %d\n"
+       ;;                                             term inf-ruby-eval-binding
+       ;;                                             file line))
+       (comint-send-region (inf-ruby-proc) start end)
+       ;; (comint-send-string (inf-ruby-proc) (concat "\n" term "\n"))
+       (comint-send-string (inf-ruby-proc) "\n")
+       )))
+
+
+
 (provide 'aleksei-ruby)
 ;;; aleksei-ruby.el ends here

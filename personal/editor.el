@@ -65,6 +65,9 @@
         ("^[\t ]*\\(?:from \\)?\\([^\(\n][^[:space:]\n]*\\):\\([1-9][0-9]*\\)\\(:in `.*'\\)?.*$" 1 2)
         ;; Ruby's Test::Unit
         ("[\t ]*\\[\\([^\(].*\\):\\([1-9][0-9]*\\)\\(\\]\\)?:" 1 2)
+        ;; Pry's binding.pry
+        ;; From: /home/aleksei/src/hms-dev/baweb/app/models/air/book_a_seat/reservation.rb @ line 429 Air::BookASeat::Reservation#number_of_seats_must_be_available:
+        ("\\(?:^From: \\|#\\)\\([^\(].*\\) @ line \\([1-9][0-9]*\\)" 1 2)
         cucumber
         gnu
         bash

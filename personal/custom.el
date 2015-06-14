@@ -97,6 +97,17 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "#fdf6e3" :foreground "#657b83" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "unknown" :family "Input"))))
+ '(dired-directory ((t (:foreground "#268bd2" :weight normal))))
+ '(dired-flagged ((t (:foreground "#dc322f"))))
+ '(dired-header ((t (:background "#fdf6e3" :foreground "#268bd2"))))
+ '(dired-ignored ((t (:inherit shadow))))
+ '(dired-mark ((t (:foreground "#b58900" :weight bold))))
+ '(dired-marked ((t (:foreground "#d33682" :weight bold))))
+ '(dired-perm-write ((t (:foreground "#657b83" :underline t))))
+ '(dired-symlink ((t (:foreground "#2aa198" :slant italic :weight normal))))
+ '(dired-warning ((t (:foreground "#cb4b16" :underline t))))
+ '(font-lock-comment-delimiter-face ((t (:foreground "#93a1a1" :slant italic))))
+ '(font-lock-comment-face ((t (:foreground "#93a1a1" :slant italic))))
  '(mode-line ((t (:box (:line-width -1 :style released-button) :background "#eee8d5" :foreground "#657b83"))))
  '(mode-line-inactive ((t (:inherit mode-line :background "#fdf6e3" :foreground "#93a1a1" :box (:line-width -1 :style released-button) :weight light))))
  '(variable-pitch ((t (:family "Ubuntu")))))

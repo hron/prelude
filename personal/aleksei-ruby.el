@@ -36,6 +36,8 @@
 ;; (add-hook 'ruby-mode-hook 'robe-mode)
 ;; (setq robe-turn-on-eldoc nil)
 
+(add-to-list 'auto-mode-alist '("\\.prawn\\'" . ruby-mode))
+
 (defun guard (dir)
   "*Run guard in DIR."
   (interactive "DDirectory with Guardfile: ")

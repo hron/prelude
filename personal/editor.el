@@ -147,3 +147,8 @@
              (local-set-key (kbd "S-SPC") 'helm-projectile)))
 
 (define-key isearch-mode-map "\C-f" 'isearch-repeat-forward)
+
+(add-to-list 'tramp-default-proxies-alist
+             '(nil "\\`root\\'" "/ssh:%h:"))
+(add-to-list 'tramp-default-proxies-alist
+             '((regexp-quote (system-name)) nil nil))

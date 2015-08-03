@@ -1,4 +1,5 @@
 (scroll-bar-mode -1)
+(horizontal-scroll-bar-mode -1)
 
 (setq frame-title-format
       '("" (:eval (if (buffer-file-name)

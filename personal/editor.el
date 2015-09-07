@@ -128,16 +128,19 @@
 
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
 (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
-(define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
+(define-key helm-map (kbd "C-a")  'helm-select-action) ; list actions using C-z
 
 (eval-after-load 'helm-files
   (progn
     (define-key helm-find-files-map (kbd "C-<backspace>") nil)
-    (define-key helm-read-file-map (kbd "C-<backspace>") nil)))
+    (define-key helm-find-files-map (kbd "C-z") nil)
+    (define-key helm-read-file-map (kbd "C-<backspace>") nil)
+    (define-key helm-read-file-map (kbd "C-z") nil)))
 
 (eval-after-load 'helm-projectile
   (progn
-    (define-key helm-projectile-find-file-map (kbd "C-<backspace>") nil)))
+    (define-key helm-projectile-find-file-map (kbd "C-<backspace>") nil)
+    (define-key helm-projectile-find-file-map (kbd "C-z") nil)))
 
 ;; Magit rebinds global keys, so we have to workaround this by making
 ;; local key bindings.

@@ -174,9 +174,10 @@ in current buffer."
 	("K" "Karmasoft (Next Actions)"
 	 tags-tree (concat "Karmasoft" org-agenda-na-expr))
 
-	("й" "Outside" tags-todo "outside-someday")
-	("o" "Outside" tags-tree
+        ("o" "Outside" tags-tree
 	 (concat (concat "outside-someday" org-agenda-active-expr)))
+	("O" "Outside (Next Actions)"
+	 tags-tree (concat "outside" org-agenda-na-expr))
 
 	("х" "Relax" tags-todo "relax-someday")
 	("x" "Relax" tags-tree

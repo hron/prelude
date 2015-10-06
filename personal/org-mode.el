@@ -89,6 +89,7 @@ in current buffer."
   (setq word-wrap t))
 
 (add-hook 'org-mode-hook 'soft-wrap-lines) ; make org-mode wrap long lines
+(add-hook 'org-mode-hook '(lambda () (diff-hl-mode -1)))
 
 ;; (require 'org-cua-dwim)
 ;; (add-hook 'org-mode-hook 'org-cua-dwim-turn-on-org-cua-mode-partial-support)
@@ -159,21 +160,6 @@ in current buffer."
 	("B" "BoutiqueAir (Next Actions)"
 	 tags-tree (concat "BoutiqueAir" org-agenda-na-expr))
 
-	("2" "2combinators"
-	 tags-tree (concat "2combinators" org-agenda-active-expr))
-	("@" "2combinators (Next Actions)"
-	 tags-tree (concat "2combinators" org-agenda-na-expr))
-
-	("f" "FailsafePayments"
-	 tags-tree (concat "FailsafePayments" org-agenda-active-expr))
-	("F" "FailsafePayments (Next Actions)"
-	 tags-tree (concat "FailsafePayments" org-agenda-na-expr))
-
-	("k" "Karmasoft"
-	 tags-tree (concat "Karmasoft" org-agenda-active-expr))
-	("K" "Karmasoft (Next Actions)"
-	 tags-tree (concat "Karmasoft" org-agenda-na-expr))
-
         ("o" "Outside" tags-tree
 	 (concat (concat "outside-someday" org-agenda-active-expr)))
 	("O" "Outside (Next Actions)"
@@ -215,64 +201,18 @@ in current buffer."
 
 (setq org-completion-use-ido t)
 
-;; (setq org-archive-default-command 'org-archive-to-archive-sibling)
-(setq org-archive-default-command 'org-archive-subtree)
+(setq org-icalendar-combined-agenda-file "~/org/tasks.ics")
+(setq org-icalendar-use-deadline '(event-if-todo event-if-not-todo todo-due))
+(setq org-icalendar-use-scheduled '(event-if-todo event-if-not-todo todo-start))
+(setq org-icalendar-alarm-time 15)
+;; (org-icalendar-combine-agenda-files)
 
-(defun org-feed-springpad-formatter (entry)
-  "This function basically just removes <![CDATA[]]> from springpad notes RSS."
-  (let ((template "\n* %h \n  %U\n  %a\n"))
-	(let (dlines fmt tmp indent time name
-		     v-h v-t v-T v-u v-U v-a)
-	  (setq dlines (org-split-string (or (plist-get entry :description) "???")
-					 "\n")
-		v-h (or (plist-get entry :title) (car dlines) "???")
-		time (or (if (plist-get entry :pubDate)
-			     (org-read-date t t (plist-get entry :pubDate)))
-			 (current-time))
-		v-t (format-time-string (org-time-stamp-format nil nil) time)
-		v-T (format-time-string (org-time-stamp-format t   nil) time)
-		v-u (format-time-string (org-time-stamp-format nil t)   time)
-		v-U (format-time-string (org-time-stamp-format t   t)   time)
-		v-a (if (setq tmp (or (and (plist-get entry :guid-permalink)
-					   (plist-get entry :guid))
-				      (plist-get entry :link)))
-			(concat "[[" tmp "]]\n")
-		      ""))
-	  ;; This is actually my code
-	  (setq v-h (if (string-match "<!\\[CDATA\\[\\(.*\\)\\]\\]>" v-h)
-			(replace-match "\\1" nil nil v-h)))
-	  ;; end
-	  (with-temp-buffer
-	    (insert template)
-	    (goto-char (point-min))
-	    (while (re-search-forward "%\\([a-zA-Z]+\\)" nil t)
-	      (setq name (match-string 1))
-	      (cond
-	       ((member name '("h" "t" "T" "u" "U" "a"))
-		(replace-match (symbol-value (intern (concat "v-" name))) t t))
-	       ((setq tmp (plist-get entry (intern (concat ":" name))))
-		(save-excursion
-		  (save-match-data
-		    (beginning-of-line 1)
-		    (when (looking-at (concat "^\\([ \t]*\\)%" name "[ \t]*$"))
-		      (setq tmp (org-feed-make-indented-block
-				 tmp (org-get-indentation))))))
-		(replace-match tmp t t))))
-	    (decode-coding-string
-	     (buffer-string) (detect-coding-region (point-min) (point-max) t))))))
+;; (setq org-archive-default-command 'org-archive-to-archive-sibling)
+(setq org-archive-location (concat "%s_archive_" (format-time-string "%Y") ".org" "::* Tasks" ))
+(setq org-archive-default-command 'org-archive-subtree)
 
 (setq org-feed-alist
       '(
-        ;; ("Readability"
-        ;;    "http://www.readability.com/aleksei/latest/feed"
-        ;;    "~/org/tasks.org" "Inbox"
-        ;;    :template "\n* %h :read:\n  %U\n  %a\n"
-        ;;    :drawer "READABILITY")
-        ;; ("Springpad"
-        ;;  "http://springpad.com/api/users/aleksei/blocks/mystuff?type=task&format=rss&key=3umhkt67iqpa4b"
-        ;;  "~/org/tasks.org" "Inbox"
-        ;;  :formatter org-feed-springpad-formatter
-        ;;  :drawer "SPRINGPAD")
         ("Boutiqueair"
          "https://hmsinc.unfuddle.com/ticket_reports/4/generate.rss?aak=blah&pak=blah"
          "~/org/tasks.org" "Inbox"

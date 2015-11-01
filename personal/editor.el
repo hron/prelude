@@ -154,3 +154,6 @@
              '(nil "\\`root\\'" "/ssh:%h:"))
 (add-to-list 'tramp-default-proxies-alist
              '((regexp-quote (system-name)) nil nil))
+
+(require 'prelude-packages)
+(prelude-require-package 'edit-server)

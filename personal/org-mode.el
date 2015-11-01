@@ -61,13 +61,7 @@
 (add-hook 'org-mode-hook
 	  '(lambda ()
 	     (local-set-key (kbd "C-c o") 'org-todo-convert-to-project)
-             (local-set-key (kbd "C-c C-t") 'org-todo)
-             (add-hook 'after-save-hook
-                       '(lambda ()
-                          (org-mobile-push)
-                          (org-icalendar-combine-agenda-files 1))
-                       nil
-                       t)))
+             (local-set-key (kbd "C-c C-t") 'org-todo)))
 
 ;; The most basic logging is to keep track of _when_ a certain TODO item
 ;; was finished.  This is achieved with(1).
@@ -230,7 +224,9 @@ in current buffer."
   (interactive)
   (org-feed-update-all)
   (org-mobile-pull)
-  (aleksei-copy-trees-from-mobileorg-to-inbox))
+  (aleksei-copy-trees-from-mobileorg-to-inbox)
+  (org-mobile-push)
+  (org-icalendar-combine-agenda-files))
 
 (define-key org-mode-map "\C-c\C-xg" 'aleksei-org-feed-update-all-and-mobile-pull)
 

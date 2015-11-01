@@ -102,7 +102,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#fdf6e3" :foreground "#657b83" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "unknown" :family "Ubuntu Mono"))))
  '(dired-directory ((t (:foreground "#268bd2" :weight normal))))
  '(dired-flagged ((t (:foreground "#dc322f"))))
  '(dired-header ((t (:background "#fdf6e3" :foreground "#268bd2"))))

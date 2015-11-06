@@ -20,16 +20,28 @@
 
 (global-set-key (kbd "C-c D") 'prelude-delete-file-and-buffer)
 
-(global-set-key [f9] '(lambda (command &optional comint)
-			(interactive
-                         (list
-                          (let ((command (eval compile-command)))
-                            (if (or compilation-read-command current-prefix-arg)
-				(compilation-read-command command)
-                              command))
-                          (consp current-prefix-arg)))
-			(setq comint (not comint))
-			(compile command comint)))
+(global-set-key [f9] 'gusev-projectile-compile-project)
+(defun gusev-projectile-compile-project (arg &optional dir)
+  "Run project compilation command.
+
+Normally you'll be prompted for a compilation command, unless
+variable `compilation-read-command'.  You can force the prompt
+with a prefix ARG."
+  (interactive "P")
+  (let* ((project-root (projectile-project-root))
+         (default-directory (or dir (projectile-compilation-dir)))
+         (default-cmd (projectile-compilation-command default-directory))
+         (compilation-cmd (if (or compilation-read-command arg)
+                              (projectile-read-command "Compile command: "
+                                                       default-cmd)
+                            default-cmd)))
+    (puthash default-directory compilation-cmd projectile-compilation-cmd-map)
+    (save-some-buffers (not compilation-ask-about-save)
+                       (lambda ()
+                         (projectile-project-buffer-p (current-buffer)
+                                                      project-root)))
+    (compile compilation-cmd t)))
+
 
 (defun gusev-clear-shell ()
   (interactive)

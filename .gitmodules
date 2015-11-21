@@ -1,0 +1,3 @@
+[submodule "vendor/evernote-mode"]
+	path = vendor/evernote-mode
+	url = https://github.com/pymander/evernote-mode.git

@@ -223,9 +223,7 @@ in current buffer."
   (interactive)
   (org-feed-update-all)
   (org-mobile-pull)
-  (aleksei-copy-trees-from-mobileorg-to-inbox)
-  (org-mobile-push)
-  (org-icalendar-combine-agenda-files))
+  (aleksei-copy-trees-from-mobileorg-to-inbox))
 
 (define-key org-mode-map "\C-c\C-xg" 'aleksei-org-feed-update-all-and-mobile-pull)
 

@@ -100,7 +100,7 @@
        (comint-send-string (inf-ruby-proc) "\n")
        )))
 
-
+(add-hook 'feature-mode-hook '(lambda () (flyspell-mode 1)))
 
 (provide 'aleksei-ruby)
 ;;; aleksei-ruby.el ends here

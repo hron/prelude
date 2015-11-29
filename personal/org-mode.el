@@ -149,11 +149,11 @@ in current buffer."
  org-agenda-active-expr (concat org-agenda-scheduled-later-expr "-DONE"))
 
 (setq org-agenda-custom-commands
-      '(("х" "Home" tags-todo "-2combinators-BoutiqueAir-FailsafePayments-Karmasoft-relax-read-@Minsk-@Smorgon")
+      '(("х" "Home" tags-todo "-outside-BoutiqueAir-relax-read-@Minsk-@Smorgon")
 	("h" "Home"
-	 tags-tree (concat "-2combinators-BoutiqueAir-FailsafePayments-Karmasoft-relax-read-@Minsk-@Smorgon" org-agenda-active-expr))
+	 tags-tree (concat "-outside-BoutiqueAir-relax-read-@Minsk-@Smorgon" org-agenda-active-expr))
 	("H" "Home (Next Actions)"
-	 tags-tree (concat "-2combinators-BoutiqueAir-FailsafePayments-Karmasoft-relax-read-@Minsk-@Smorgon" org-agenda-na-expr))
+	 tags-tree (concat "-outside-BoutiqueAir-relax-read-@Minsk-@Smorgon" org-agenda-na-expr))
 
 	("b" "BoutiqueAir"
 	 tags-tree (concat "BoutiqueAir" org-agenda-active-expr))

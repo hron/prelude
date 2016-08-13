@@ -156,4 +156,4 @@
              '((regexp-quote (system-name)) nil nil))
 
 (require 'prelude-packages)
-(prelude-require-package 'edit-server)
+

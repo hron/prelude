@@ -109,7 +109,6 @@
 (setq-default truncate-lines t)
 (setq helm-truncate-lines t)
 
-(setq company-idle-delay nil)
 (setq prelude-auto-save nil)
 (add-hook 'markdown-mode-hook 'turn-on-visual-line-mode)
 

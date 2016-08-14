@@ -3,6 +3,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default bold shadow italic underline bold bold-italic bold])
  '(ansi-color-names-vector
    ["#eee8d5" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#839496"])
  '(blink-cursor-mode t)
@@ -13,7 +15,7 @@
  '(cursor-type (quote bar))
  '(custom-safe-themes
    (quote
-    ("9dae95cdbed1505d45322ef8b5aa90ccb6cb59e0ff26fef0b8f411dfc416c552" "3b819bba57a676edf6e4881bd38c777f96d1aa3b3b5bc21d8266fa5b0d0f1ebf" default)))
+    ("b0ab5c9172ea02fba36b974bbd93bc26e9d26f379c9a29b84903c666a5fde837" "9dae95cdbed1505d45322ef8b5aa90ccb6cb59e0ff26fef0b8f411dfc416c552" "3b819bba57a676edf6e4881bd38c777f96d1aa3b3b5bc21d8266fa5b0d0f1ebf" default)))
  '(fci-rule-color "#eee8d5")
  '(helm-ag-insert-at-point t)
  '(helm-external-programs-associations (quote (("clj" . "konsole") (nil . "konsole"))))
@@ -35,6 +37,7 @@
      ("#F2804F" . 70)
      ("#F771AC" . 85)
      ("#eee8d5" . 100))))
+ '(hl-sexp-background-color "#efebe9")
  '(magit-diff-use-overlays nil)
  '(magit-push-always-verify nil)
  '(magit-use-overlays nil)
@@ -100,23 +103,3 @@
  '(weechat-color-list
    (quote
     (unspecified "#fdf6e3" "#eee8d5" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#657b83" "#839496"))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#fdf6e3" :foreground "#657b83" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 113 :width normal :foundry "outline" :family "InputMonoNarrow Medium"))))
- '(dired-directory ((t (:foreground "#268bd2" :weight normal))))
- '(dired-flagged ((t (:foreground "#dc322f"))))
- '(dired-header ((t (:background "#fdf6e3" :foreground "#268bd2"))))
- '(dired-ignored ((t (:inherit shadow))))
- '(dired-mark ((t (:foreground "#b58900" :weight bold))))
- '(dired-marked ((t (:foreground "#d33682" :weight bold))))
- '(dired-perm-write ((t (:foreground "#657b83" :underline t))))
- '(dired-symlink ((t (:foreground "#2aa198" :slant italic :weight normal))))
- '(dired-warning ((t (:foreground "#cb4b16" :underline t))))
- '(font-lock-comment-delimiter-face ((t (:foreground "#93a1a1" :slant italic))))
- '(font-lock-comment-face ((t (:foreground "#93a1a1" :slant italic))))
- '(mode-line ((t (:box (:line-width -1 :style released-button) :background "#eee8d5" :foreground "#657b83"))))
- '(mode-line-inactive ((t (:inherit mode-line :background "#fdf6e3" :foreground "#93a1a1" :box (:line-width -1 :style released-button) :weight light))))
- '(variable-pitch ((t (:family "Ubuntu")))))

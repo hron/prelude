@@ -9,13 +9,13 @@
 
 (setq use-dialog-box nil)
 
+(when (or (equal system-type 'windows-nt) (equal system-type 'cygwin))
+  (set-face-attribute 'default nil :font "InputMono-11"))
+
 ;; (prelude-require-package 'material-theme)
 ;; (disable-theme 'zenburn)
 ;; (load-theme 'material-light t)
 
-;; (prelude-require-package 'leuven-theme)
-;; (disable-theme 'zenburn)
-;; (load-theme 'leuven t)
+(prelude-require-package 'powerline)
+(powerline-default-theme)
 
-(when (or (equal system-type 'windows-nt) (equal system-type 'cygwin))
-  (set-face-attribute 'default nil :font "InputMono Medium-11"))

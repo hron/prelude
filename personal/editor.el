@@ -15,6 +15,8 @@
 (setq x-select-enable-clipboard t)
 (setq select-active-regions nil)
 
+(setq browse-url-browser-function 'browse-url-default-browser)
+
 ;; (setq sp-keymap (make-sparse-keymap))
 ;; (setq sp-base-key-bindings 'smartparens)
 ;; (sp-use-smartparens-bindings)
@@ -140,6 +142,9 @@
 (prelude-require-package 'helm-projectile)
 (require 'helm-projectile)
 (define-key helm-projectile-find-file-map (kbd "C-<backspace>") nil)
+
+(prelude-require-package 'helm-dash)
+(setq helm-dash-docsets-path "C:/Users/aleks/AppData/Local/Zeal/Zeal/docsets")
 
 ;; Magit rebinds global keys, so we have to workaround this by making
 ;; local key bindings.

@@ -15,8 +15,6 @@
 (setq x-select-enable-clipboard t)
 (setq select-active-regions nil)
 
-(setq browse-url-browser-function 'browse-url-default-browser)
-
 ;; (setq sp-keymap (make-sparse-keymap))
 ;; (setq sp-base-key-bindings 'smartparens)
 ;; (sp-use-smartparens-bindings)
@@ -42,8 +40,6 @@
 
 (setq set-mark-command-repeat-pop t)
 
-(setq browse-url-generic-program "xdg-open")
-(setq browse-url-browser-function 'browse-url-generic)
 (setq browse-url-new-window-flag 1)
 
 (setq-default ediff-window-setup-function 'ediff-setup-windows-plain)
@@ -159,6 +155,15 @@
              '(nil "\\`root\\'" "/ssh:%h:"))
 (add-to-list 'tramp-default-proxies-alist
              '((regexp-quote (system-name)) nil nil))
+
+(when (equal system-type 'windows-nt)
+  (setq fakecygpty-program (expand-file-name "vendor/fakecygpty/fakecygpty.exe" prelude-dir)
+        fakecygpty-qkill-program (expand-file-name "vendor/fakecygpty/qkill.exe" prelude-dir))
+  (if (file-executable-p fakecygpty-program)
+      (progn
+        (require 'fakecygpty)
+        (fakecygpty-activate))
+    (message "Compile fakecygpty.exe in .emacs.d/vendor/fakecygpty")))
 
 (require 'prelude-packages)
 

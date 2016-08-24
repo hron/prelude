@@ -1,0 +1,3 @@
+[submodule "vendor/fakecygpty"]
+	path = vendor/fakecygpty
+	url = https://github.com/d5884/fakecygpty

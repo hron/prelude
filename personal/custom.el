@@ -39,6 +39,7 @@
      ("#eee8d5" . 100))))
  '(hl-sexp-background-color "#efebe9")
  '(magit-diff-use-overlays nil)
+ '(magit-display-buffer-function (quote magit-display-buffer-same-window-except-diff-v1))
  '(magit-push-always-verify nil)
  '(magit-use-overlays nil)
  '(package-selected-packages
@@ -103,3 +104,9 @@
  '(weechat-color-list
    (quote
     (unspecified "#fdf6e3" "#eee8d5" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#657b83" "#839496"))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

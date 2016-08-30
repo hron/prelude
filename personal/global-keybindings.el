@@ -62,6 +62,8 @@ with a prefix ARG."
 (global-set-key (kbd "C-w") 'kill-this-buffer)
 (global-set-key (kbd "C-b") 'helm-mini)
 
+(global-set-key (kbd "C-d") 'helm-dash-at-point)
+
 (defun gusev-touch-current-file ()
   (interactive)
   (when (buffer-file-name)

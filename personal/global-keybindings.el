@@ -22,6 +22,11 @@
 (global-set-key (kbd "C-M-5") 'anzu-query-replace-at-cursor-thing)
 (global-set-key (kbd "C-%") 'anzu-query-replace-regexp)
 (global-set-key (kbd "RET") 'electric-newline-and-maybe-indent)
+(global-set-key (kbd "C-j")
+                '(lambda ()
+                   (interactive)
+                   (next-line)
+                   (join-line)))
 
 (global-set-key [f9] 'gusev-projectile-compile-project)
 (defun gusev-projectile-compile-project (arg &optional dir)

@@ -129,6 +129,7 @@
 (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
 (define-key helm-map (kbd "C-a")  'helm-select-action) ; list actions using C-a
 (define-key helm-map (kbd "C-z") 'undo-tree-undo)
+(define-key helm-map (kbd "C-v") 'cua-paste)
 
 (require 'helm-files)
 (define-key helm-find-files-map (kbd "C-<backspace>") nil)

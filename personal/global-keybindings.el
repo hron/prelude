@@ -65,7 +65,7 @@ with a prefix ARG."
 
 (global-set-key (kbd "C-f") 'isearch-forward)
 (define-key isearch-mode-map (kbd "RET") 'isearch-repeat-forward)
-(define-key isearch-mode-map (kbd "C-v") 'isearch-yank-pop)
+(define-key isearch-mode-map (kbd "C-v") 'cua-paste)
 
 (global-set-key (kbd "C-w") 'kill-this-buffer)
 (global-set-key (kbd "C-b") 'helm-mini)

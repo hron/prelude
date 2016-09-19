@@ -1,4 +1,4 @@
-;;; aleksei-ruby.el --- 
+;;; aleksei-ruby.el ---
 ;;
 ;; Copyright © 2011-2013 Aleksei Gusev
 ;;
@@ -101,6 +101,8 @@
        )))
 
 (add-hook 'feature-mode-hook '(lambda () (flyspell-mode 1)))
+
+;; (prelude-require-package 'rspec-mode)
 
 (provide 'aleksei-ruby)
 ;;; aleksei-ruby.el ends here

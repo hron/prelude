@@ -166,5 +166,9 @@
         (fakecygpty-activate))
     (message "Compile fakecygpty.exe in .emacs.d/vendor/fakecygpty")))
 
+;; Flycheck for ruby is really slow on windows
+(when (equal system-type 'windows-nt)
+  (global-flycheck-mode -1))
+
 (require 'prelude-packages)
 

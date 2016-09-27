@@ -103,6 +103,8 @@
 ;; Turn off electric indent in haml mode
 (add-hook 'haml-mode-hook
           (lambda () (set (make-local-variable 'electric-indent-mode) nil)))
+(add-hook 'ruby-mode-hook
+          (lambda () (set (make-local-variable 'electric-indent-mode) nil)))
 
 (setq-default truncate-lines t)
 (setq helm-truncate-lines t)

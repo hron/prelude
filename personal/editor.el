@@ -15,6 +15,8 @@
 (setq x-select-enable-clipboard t)
 (setq select-active-regions nil)
 
+(horizontal-scroll-bar-mode -1)
+
 ;; (setq sp-keymap (make-sparse-keymap))
 ;; (setq sp-base-key-bindings 'smartparens)
 ;; (sp-use-smartparens-bindings)

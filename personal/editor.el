@@ -174,5 +174,8 @@
 (when (equal system-type 'windows-nt)
   (global-flycheck-mode -1))
 
+(prelude-require-package 'web-beautify)
+(require 'web-beautify)
+
 (require 'prelude-packages)
 

@@ -22,3 +22,5 @@ tramp
 /var/pcache
 /rake.cache
 /.org-id-locations
+*.stackdump
+/server/

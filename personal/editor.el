@@ -10,6 +10,8 @@
 (global-unset-key (kbd "S-<left>"))
 (global-unset-key (kbd "S-<down>"))
 
+(global-set-key (kbd "C-e") 'helm-mini)
+
 (add-hook 'dired-mode-hook 'diff-hl-dired-mode)
 
 (setq x-select-enable-clipboard t)

@@ -11,6 +11,7 @@
 (global-unset-key (kbd "S-<down>"))
 
 (global-set-key (kbd "C-e") 'helm-mini)
+(global-set-key (kbd "C-S-z") 'undo-tree-redo)
 
 (add-hook 'dired-mode-hook 'diff-hl-dired-mode)
 

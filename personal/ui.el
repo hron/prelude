@@ -5,7 +5,7 @@
                       (abbreviate-file-name (buffer-file-name))
                     "%b"))))
 
-(setq-default left-fringe-width 7)
+(fringe-mode '(12 . 12))
 
 (setq use-dialog-box nil)
 
@@ -18,4 +18,3 @@
 
 (prelude-require-package 'powerline)
 (powerline-default-theme)
-

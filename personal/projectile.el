@@ -1,4 +1,4 @@
-(prelude-require-package 'ag)
+;; (prelude-require-package 'ag)
 
 (add-hook 'projectile-mode-hook 
           (lambda () 

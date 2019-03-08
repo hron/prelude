@@ -12,6 +12,10 @@
 
 (global-set-key (kbd "C-e") 'helm-mini)
 (global-set-key (kbd "C-S-z") 'undo-tree-redo)
+(global-set-key (kbd "C-;") 'comment-dwim)
+(global-set-key (kbd "C-/") 'comment-dwim)
+(global-set-key (kbd "C-h") 'er/expand-region)
+(global-set-key (kbd "C-S-h") (lambda () (interactive) (er/expand-region -1)))
 
 (add-hook 'dired-mode-hook 'diff-hl-dired-mode)
 

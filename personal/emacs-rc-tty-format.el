@@ -24,51 +24,51 @@
 
 ;;; Code:
 
-(eval-after-load 'tty-format
-  '(progn 
-     (defun tty-format-guess ()
-       "Decode text files containing ANSI SGR or backspace sequences.
-This is designed for use from `find-file-hook' (or
-`find-file-hooks').
-
-If the buffer filename is \".txt\" or \"README\" and there's any
-ANSI SGR escapes or backspace overstriking then call
-`format-decode-buffer' to decode with `ansi-colors' and/or
-`backspace-overstrike' formats respectively.
-
-It'd be too dangerous to look at every file for escape and
-backspace sequences, they could too easily occur in binary data
-like an image file.  The idea of this function is to check just
-text files, presuming you're confident all \".txt\" files should
-be ordinary text.
-
-If you normally use this guess but found it didn't notice then
-remember the formats can always be decoded explicitly with
-
-    \\[format-decode-buffer] backspace-overstrike
-and/or
-    \\[format-decode-buffer] ansi-colors"
-
-       (let ((filename (buffer-file-name)))
-         (when filename
-           (when (and (featurep 'jka-compr)
-                      (jka-compr-installed-p))
-             (setq filename (jka-compr-byte-compiler-base-file-name filename)))
-
-           (when (let ((case-fold-search t))
-                   (or (string-match "\\.txt\\'"  filename)
-                       (string-match "/README\\'" filename)
-                       (string-match "\\(cucumber\\|development\\|test\\|delayed_job\\)\\.log\\'"  filename)))
-
-             (if (save-excursion
-                   (goto-char (point-min))
-                   (re-search-forward "[^\b]\b[^\b]" nil t))
-                 (format-decode-buffer 'backspace-overstrike))
-
-             (if (save-excursion
-                   (goto-char (point-min))
-                   (re-search-forward ansi-color-regexp nil t))
-                 (format-decode-buffer 'ansi-colors))))))
-     (add-hook 'find-file-hook 'tty-format-guess)))
+;; (eval-after-load 'tty-format
+;;   '(progn 
+;;      (defun tty-format-guess ()
+;;        "Decode text files containing ANSI SGR or backspace sequences.
+;; This is designed for use from `find-file-hook' (or
+;; `find-file-hooks').
+;; 
+;; If the buffer filename is \".txt\" or \"README\" and there's any
+;; ANSI SGR escapes or backspace overstriking then call
+;; `format-decode-buffer' to decode with `ansi-colors' and/or
+;; `backspace-overstrike' formats respectively.
+;; 
+;; It'd be too dangerous to look at every file for escape and
+;; backspace sequences, they could too easily occur in binary data
+;; like an image file.  The idea of this function is to check just
+;; text files, presuming you're confident all \".txt\" files should
+;; be ordinary text.
+;; 
+;; If you normally use this guess but found it didn't notice then
+;; remember the formats can always be decoded explicitly with
+;; 
+;;     \\[format-decode-buffer] backspace-overstrike
+;; and/or
+;;     \\[format-decode-buffer] ansi-colors"
+;; 
+;;        (let ((filename (buffer-file-name)))
+;;          (when filename
+;;            (when (and (featurep 'jka-compr)
+;;                       (jka-compr-installed-p))
+;;              (setq filename (jka-compr-byte-compiler-base-file-name filename)))
+;; 
+;;            (when (let ((case-fold-search t))
+;;                    (or (string-match "\\.txt\\"  filename)
+;;                        (string-match "README\\'" filename)
+;;                        (string-match "\\(cucumber\\|development\\|test\\|delayed_job\\)\\.log\\'"  filename)))
+;; 
+;;              (if (save-excursion
+;;                    (goto-char (point-min))
+;;                    (re-search-forward "[^\b]\b[^\b]" nil t))
+;;                  (format-decode-buffer 'backspace-overstrike))
+;; 
+;;              (if (save-excursion
+;;                    (goto-char (point-min))
+;;                    (re-search-forward ansi-color-regexp nil t))
+;;                  (format-decode-buffer 'ansi-colors))))))
+;;      (add-hook 'find-file-hook 'tty-format-guess)))
 
 ;;; emacs-rc-tty-format.el ends here

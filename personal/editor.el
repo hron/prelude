@@ -15,6 +15,7 @@
 (global-set-key (kbd "C-h") 'er/expand-region)
 (global-set-key (kbd "C-S-h") (lambda () (interactive) (er/expand-region -1)))
 (global-set-key (kbd "<home>") 'crux-move-beginning-of-line)
+(global-set-key (kbd "C-M-l") 'indent-region)
 
 (add-hook 'dired-mode-hook 'diff-hl-dired-mode)
 

@@ -1,5 +1,4 @@
 (cua-mode +1)
-(global-set-key (kbd "C-y") 'undo-tree-redo)
 
 (global-set-key (kbd "M-<down>") 'other-window)
 (global-unset-key (kbd "C-x O"))
@@ -12,39 +11,27 @@
 
 (global-set-key (kbd "C-e") 'helm-mini)
 (global-set-key (kbd "C-S-z") 'undo-tree-redo)
-(global-set-key (kbd "C-;") 'comment-dwim)
-(global-set-key (kbd "C-/") 'comment-dwim)
+(global-set-key (kbd "C-p") help-map)
 (global-set-key (kbd "C-h") 'er/expand-region)
 (global-set-key (kbd "C-S-h") (lambda () (interactive) (er/expand-region -1)))
+(global-set-key (kbd "<home>") 'crux-move-beginning-of-line)
 
 (add-hook 'dired-mode-hook 'diff-hl-dired-mode)
 
-(setq x-select-enable-clipboard t)
+(global-set-key (kbd "<escape>") 'keyboard-quit)
+
+(global-set-key (kbd "M-`") 'magit-status)
+
+(define-key helm-map (kbd "<escape>") 'helm-keyboard-quit)
+(define-key helm-map (kbd "C-p") help-map)
+
+(setq select-enable-clipboard t)
 (setq select-active-regions nil)
 
 (horizontal-scroll-bar-mode -1)
 
-;; (setq sp-keymap (make-sparse-keymap))
-;; (setq sp-base-key-bindings 'smartparens)
-;; (sp-use-smartparens-bindings)
-(setq sp-override-key-bindings '(("M-s" . nil)
-                                 ("M-<up>" . nil)
-                                 ("M-<down>" . nil)
-                                 ("M-r" . nil)
-                                 ("C-)" . nil)
-                                 ("C-<right>" . nil)
-                                 ("C-}" . nil)
-                                 ("C-<left>" . nil)
-                                 ("C-(" . nil)
-                                 ("C-M-<left>" . nil)
-                                 ("C-{" . nil)
-                                 ("C-M-<right>" . nil)
-                                 ("M-S" . nil)
-                                 ("S-<space>" . nil)
-                                 ("M-DEL" . sp-unwrap-sexp)
-                                 ))
-(sp--update-override-key-bindings)
-
+(add-hook 'prog-mode-hook 'turn-off-smartparens-mode t)
+(add-hook 'prog-mode-hook (lambda () (local-set-key (kbd "C-/") 'comment-dwim)))
 (add-hook 'shell-mode-hook 'compilation-shell-minor-mode)
 
 (setq set-mark-command-repeat-pop t)

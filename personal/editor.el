@@ -45,7 +45,13 @@
 (add-hook 'prog-mode-hook 'turn-off-smartparens-mode t)
 (add-hook 'emacs-lisp-mode-hook 'turn-off-smartparens-mode t)
 (add-hook 'emacs-lisp-mode-hook 'turn-off-smartparens-strict-mode t)
+
 (add-hook 'prog-mode-hook (lambda () (local-set-key (kbd "C-/") 'comment-dwim)))
+
+(add-hook 'prog-mode-hook 'electric-indent-local-mode)
+
+(define-key minibuffer-inactive-mode-map (kbd "<escape>") 'keyboard-quit)
+
 (add-hook 'shell-mode-hook 'compilation-shell-minor-mode)
 
 (setq set-mark-command-repeat-pop t)
@@ -151,9 +157,6 @@
 (prelude-require-package 'helm-projectile)
 (require 'helm-projectile)
 (define-key helm-projectile-find-file-map (kbd "C-<backspace>") nil)
-
-(prelude-require-package 'helm-dash)
-(setq helm-dash-docsets-path "C:/Users/aleks/AppData/Local/Zeal/Zeal/docsets")
 
 ;; Magit rebinds global keys, so we have to workaround this by making
 ;; local key bindings.

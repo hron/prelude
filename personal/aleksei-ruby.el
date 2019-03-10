@@ -34,8 +34,15 @@
 
 (prelude-require-package 'robe)
 (add-hook 'ruby-mode-hook 'robe-mode)
+(defun gusev-robe-jump ()
+  "Pushes mark and then jump"
+  (interactive)
+  (push-mark)
+  (call-interactively 'robe-jump))
+
 (add-hook 'robe-mode-hook (lambda ()
-                            (local-set-key (kbd "C-b") 'robe-jump)
+                            (local-set-key (kbd "C-b") 'gusev-robe-jump)
+                            (local-set-key (kbd "M-.") 'gusev-robe-jump)
                             (local-set-key (kbd "<f1>") 'robe-doc)
                             (eldoc-mode +1)))
 

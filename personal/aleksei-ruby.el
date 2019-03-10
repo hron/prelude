@@ -32,8 +32,8 @@
 
 (require 'prelude-packages)
 
-;; (prelude-require-package 'robe)
-;; (add-hook 'ruby-mode-hook 'robe-mode)
+(prelude-require-package 'robe)
+(add-hook 'ruby-mode-hook 'robe-mode)
 ;; (setq robe-turn-on-eldoc nil)
 
 (add-to-list 'auto-mode-alist '("\\.prawn\\'" . ruby-mode))

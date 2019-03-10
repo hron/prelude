@@ -53,16 +53,16 @@
       (shell-cd dir)
       (comint-send-string buffer (concat "cd " dir "; " command "\n")))))
 
-(defun gusev-projectile-rails-run-test-at-cursor (command &optional output-buffer error-buffer)
+(defun gusev-projectile-rails-run-test-at-cursor (command)
   "Invoke test at cursor using `async-shell-command' in the project's root."
   (interactive
    (list
     (read-shell-command "Run test at point: "
-                        (concat "./bin/rails test " (file-relative-name (buffer-file-name) (projectile-project-root))))
-    current-prefix-arg
-    shell-command-default-error-buffer))
-  (projectile-with-default-dir (projectile-ensure-project (projectile-project-root))
-    (async-shell-command command output-buffer error-buffer)))
+                        (concat "./bin/rails test " (file-relative-name (buffer-file-name) (projectile-project-root))))))
+  (let ((output-buffer "*projectile-rails-test*") error-buffer)
+    (setq inf-ruby-buffer output-buffer)
+    (projectile-with-default-dir (projectile-ensure-project (projectile-project-root))         
+            (async-shell-command command output-buffer error-buffer))))
 
 (prelude-require-package 'projectile-rails)
 (add-hook 'projectile-mode-hook 'projectile-rails-on)

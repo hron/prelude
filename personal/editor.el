@@ -27,6 +27,8 @@
 (global-set-key (kbd "RET") 'indent-new-comment-line)
 (global-set-key (kbd "M-S-<left>") 'pop-global-mark) 
 
+(global-set-key (kbd "C-s") (lambda () (interactive) (save-some-buffers +1)))
+
 (electric-pair-mode +1)
 
 (define-key helm-map (kbd "<escape>") 'helm-keyboard-quit)

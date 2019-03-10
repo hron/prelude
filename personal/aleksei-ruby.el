@@ -59,10 +59,13 @@
    (list
     (read-shell-command "Run test at point: "
                         (concat "./bin/rails test " (file-relative-name (buffer-file-name) (projectile-project-root))))))
-  (let ((output-buffer "*projectile-rails-test*") error-buffer)
-    (setq inf-ruby-buffer output-buffer)
+  (let* ((output-buffer-name "*projectile-rails-test*")
+         error-buffer
+         (output-buffer (get-buffer output-buffer-name)))
+    (and output-buffer (kill-buffer-ask output-buffer))
+    (setq inf-ruby-buffer output-buffer-name)
     (projectile-with-default-dir (projectile-ensure-project (projectile-project-root))         
-            (async-shell-command command output-buffer error-buffer))))
+            (async-shell-command command output-buffer-name error-buffer))))
 
 (prelude-require-package 'projectile-rails)
 (add-hook 'projectile-mode-hook 'projectile-rails-on)

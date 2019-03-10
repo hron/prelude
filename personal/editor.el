@@ -45,12 +45,14 @@
 (horizontal-scroll-bar-mode -1)
 
 (add-hook 'prog-mode-hook 'turn-off-smartparens-mode t)
+(add-hook 'prog-mode-hook (lambda () (local-set-key (kbd "C-/") 'comment-dwim)))
+(add-hook 'prog-mode-hook 'electric-indent-local-mode)
+
 (add-hook 'emacs-lisp-mode-hook 'turn-off-smartparens-mode t)
 (add-hook 'emacs-lisp-mode-hook 'turn-off-smartparens-strict-mode t)
-
-(add-hook 'prog-mode-hook (lambda () (local-set-key (kbd "C-/") 'comment-dwim)))
-
-(add-hook 'prog-mode-hook 'electric-indent-local-mode)
+(add-hook 'emacs-lisp-mode-hook 
+          (lambda () (local-set-key (kbd "C-b") 'elisp-slime-nav-find-elisp-thing-at-point)))
+(add-hook 'emacs-lisp-mode-hook 'electric-indent-local-mode)
 
 (define-key minibuffer-inactive-mode-map (kbd "<escape>") 'keyboard-quit)
 

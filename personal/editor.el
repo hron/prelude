@@ -22,9 +22,20 @@
 (global-set-key (kbd "<escape>") 'keyboard-quit)
 
 (global-set-key (kbd "M-`") 'magit-status)
+(global-set-key (kbd "C-d") 'crux-duplicate-current-line-or-region)
+(global-set-key (kbd "C-S-d") 'crux-duplicate-and-comment-current-line-or-region)
+(global-set-key (kbd "RET") 'indent-new-comment-line)
+(global-set-key (kbd "M-S-<left>") 'pop-global-mark) 
+
+(electric-pair-mode +1)
 
 (define-key helm-map (kbd "<escape>") 'helm-keyboard-quit)
 (define-key helm-map (kbd "C-p") help-map)
+
+(define-key helm-moccur-mode-map (kbd "RET") 'helm-moccur-mode-goto-line-ow)
+
+(global-set-key (kbd "C-M-<down>") 'next-error)
+(global-set-key (kbd "C-M-<up>") (lambda () (interactive) (next-error -1)))
 
 (setq select-enable-clipboard t)
 (setq select-active-regions nil)
@@ -32,6 +43,8 @@
 (horizontal-scroll-bar-mode -1)
 
 (add-hook 'prog-mode-hook 'turn-off-smartparens-mode t)
+(add-hook 'emacs-lisp-mode-hook 'turn-off-smartparens-mode t)
+(add-hook 'emacs-lisp-mode-hook 'turn-off-smartparens-strict-mode t)
 (add-hook 'prog-mode-hook (lambda () (local-set-key (kbd "C-/") 'comment-dwim)))
 (add-hook 'shell-mode-hook 'compilation-shell-minor-mode)
 
@@ -171,30 +184,31 @@
 
 
 (setq company-active-map
-  (let ((keymap (make-sparse-keymap)))
-    (define-key keymap "\e\e\e" 'company-abort)
-    (define-key keymap "\C-g" 'company-abort)
-    (define-key keymap (kbd "M-n") 'company-select-next)
-    (define-key keymap (kbd "M-p") 'company-select-previous)
-    (define-key keymap (kbd "<down>") 'company-select-next-or-abort)
-    (define-key keymap (kbd "<up>") 'company-select-previous-or-abort)
-    (define-key keymap [remap scroll-up-command] 'company-next-page)
-    (define-key keymap [remap scroll-down-command] 'company-previous-page)
-    (define-key keymap [down-mouse-1] 'ignore)
-    (define-key keymap [down-mouse-3] 'ignore)
-    (define-key keymap [mouse-1] 'company-complete-mouse)
-    (define-key keymap [mouse-3] 'company-select-mouse)
-    (define-key keymap [up-mouse-1] 'ignore)
-    (define-key keymap [up-mouse-3] 'ignore)
-    (define-key keymap [tab] 'company-complete-selection)
-    (define-key keymap (kbd "TAB") 'company-complete-selection)
-    (define-key keymap (kbd "<f1>") 'company-show-doc-buffer)
-    (define-key keymap (kbd "C-h") 'company-show-doc-buffer)
-    (define-key keymap "\C-w" 'company-show-location)
-    (define-key keymap "\C-F" 'company-filter-candidates)
-    (dotimes (i 10)
-      (define-key keymap (read-kbd-macro (format "M-%d" i)) 'company-complete-number))
-     keymap))
+      (let ((keymap (make-sparse-keymap)))
+        (define-key keymap "\e\e\e" 'company-abort)
+        (define-key keymap "\C-g" 'company-abort)
+        (define-key keymap (kbd "M-n") 'company-select-next)
+        (define-key keymap (kbd "M-p") 'company-select-previous)
+        (define-key keymap (kbd "<down>") 'company-select-next-or-abort)
+        (define-key keymap (kbd "<up>") 'company-select-previous-or-abort)
+        (define-key keymap [remap scroll-up-command] 'company-next-page)
+        (define-key keymap [remap scroll-down-command] 'company-previous-page)
+        (define-key keymap [down-mouse-1] 'ignore)
+        (define-key keymap [down-mouse-3] 'ignore)
+        (define-key keymap [mouse-1] 'company-complete-mouse)
+        (define-key keymap [mouse-3] 'company-select-mouse)
+        (define-key keymap [up-mouse-1] 'ignore)
+        (define-key keymap [up-mouse-3] 'ignore)
+        (define-key keymap [tab] 'company-complete-selection)
+        (define-key keymap (kbd "TAB") 'company-complete-selection)
+        (define-key keymap (kbd "<f1>") 'company-show-doc-buffer)
+        (define-key keymap (kbd "C-h") 'company-show-doc-buffer)
+        (define-key keymap "\C-w" 'company-show-location)
+        (define-key keymap "\C-F" 'company-filter-candidates)
+        (dotimes (i 10)
+          (define-key keymap (read-kbd-macro (format "M-%d" i)) 'company-complete-number))
+        keymap))
+
 
 (require 'prelude-packages)
 

@@ -62,10 +62,11 @@
   (let* ((output-buffer-name "*projectile-rails-test*")
          error-buffer
          (output-buffer (get-buffer output-buffer-name)))
-    (and output-buffer (kill-buffer-ask output-buffer))
+    (save-some-buffers +1)
+    (and output-buffer (kill-buffer output-buffer))
     (setq inf-ruby-buffer output-buffer-name)
     (projectile-with-default-dir (projectile-ensure-project (projectile-project-root))         
-            (async-shell-command command output-buffer-name error-buffer))))
+      (async-shell-command command output-buffer-name error-buffer))))
 
 (prelude-require-package 'projectile-rails)
 (add-hook 'projectile-mode-hook 'projectile-rails-on)

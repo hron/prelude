@@ -74,9 +74,10 @@
          (output-buffer (get-buffer output-buffer-name)))
     (save-some-buffers +1)
     (and output-buffer (kill-buffer output-buffer))
-    (setq inf-ruby-buffer output-buffer-name)
     (projectile-with-default-dir (projectile-ensure-project (projectile-project-root))         
-      (async-shell-command command output-buffer-name error-buffer))))
+      (async-shell-command command output-buffer-name error-buffer))
+    (setq inf-ruby-buffer output-buffer-name)
+    (push (get-buffer output-buffer-name) inf-ruby-buffers)))
 
 (prelude-require-package 'projectile-rails)
 (add-hook 'projectile-mode-hook 'projectile-rails-on)
@@ -91,6 +92,8 @@
 (add-hook 'ruby-mode-hook (lambda ()
                             (interactive)
                             (eldoc-mode -1)))
+
+(add-hook 'ruby-mode-hook (lambda () (local-set-key (kbd "C-w") 'ruby-send-region)))
 
 (defun ag-set-inf-ruby-buffer-to-current ()
   "Sets `inf-ruby-buffer' variable to current buffer"

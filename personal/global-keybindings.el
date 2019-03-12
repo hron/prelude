@@ -70,17 +70,3 @@ with a prefix ARG."
 
 (global-set-key (kbd "C-w") 'kill-this-buffer)
 (global-set-key (kbd "C-b") 'helm-mini)
-
-(global-set-key (kbd "C-d") 'helm-dash-at-point)
-
-(defun gusev-touch-current-file ()
-  (interactive)
-  (when (buffer-file-name)
-    (if (buffer-modified-p)
-        (save-buffer)
-      (progn
-        (shell-command (concat dired-touch-program " " (buffer-file-name)))
-        (revert-buffer nil t)
-        (message (concat "Touched " (buffer-file-name)))))))
-
-(global-set-key (kbd "C-S-t") 'gusev-touch-current-file)

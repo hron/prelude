@@ -52,7 +52,6 @@
 (add-hook 'emacs-lisp-mode-hook 'turn-off-smartparens-strict-mode t)
 (add-hook 'emacs-lisp-mode-hook 
           (lambda () (local-set-key (kbd "C-b") 'elisp-slime-nav-find-elisp-thing-at-point)))
-(add-hook 'emacs-lisp-mode-hook (lambda () (electric-indent-local-mode +1)))
 
 (define-key minibuffer-inactive-mode-map (kbd "<escape>") 'keyboard-quit)
 
@@ -216,6 +215,17 @@
           (define-key keymap (read-kbd-macro (format "M-%d" i)) 'company-complete-number))
         keymap))
 
+(defvar gusev-diminish-modes
+  '(company-mode
+    editorconfig-mode
+    projectile-mode
+    super-save-mode
+    which-key-mode
+    helm-mode
+    prelude-mode
+    roby-mode)
+ "A list of minor modes to hide in mode-line")
+(mapc 'diminish gusev-diminish-modes)
 
 (require 'prelude-packages)
 

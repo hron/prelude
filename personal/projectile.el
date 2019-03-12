@@ -8,5 +8,6 @@
   '(progn
      (define-key projectile-mode-map (kbd "C-c t") 'projectile-toggle-between-implementation-and-test)
      (define-key projectile-mode-map (kbd "C-S-t") 'projectile-toggle-between-implementation-and-test)
+     (define-key projectile-mode-map (kbd "C-n") 'projectile-find-file)
      (define-key projectile-mode-map (kbd "C-S-n") 'projectile-find-file-dwim)
      (define-key projectile-mode-map (kbd "M-r") 'projectile-repeat-last-command)))

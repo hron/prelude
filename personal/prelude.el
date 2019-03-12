@@ -3,3 +3,5 @@
 
 (setq dired-listing-switches "-ahl --group-directories-first")
 (add-hook 'dired-mode-hook (lambda () (dired-omit-mode)))
+
+(which-function-mode -1)

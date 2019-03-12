@@ -34,60 +34,14 @@
 
 (prelude-require-package 'robe)
 (add-hook 'ruby-mode-hook 'robe-mode)
-(defun gusev-robe-jump ()
-  "Pushes mark and then jump"
-  (interactive)
-  (push-mark)
-  (call-interactively 'robe-jump))
 
 (add-hook 'robe-mode-hook (lambda ()
-                            (local-set-key (kbd "C-b") 'gusev-robe-jump)
-                            (local-set-key (kbd "M-.") 'gusev-robe-jump)
+                            (local-set-key (kbd "C-b") 'robe-jump)
                             (local-set-key (kbd "<f1>") 'robe-doc)
                             (local-set-key (kbd "C-i") 'robe-doc)
                             (eldoc-mode +1)))
 
 (add-to-list 'auto-mode-alist '("\\.prawn\\'" . ruby-mode))
-
-(defun guard (dir)
-  "*Run guard in DIR."
-  (interactive "DDirectory with Guardfile: ")
-  (if (file-exists-p (concat dir "/Guardfile"))
-      (let* ((buffer-name (concat "*guard*<" dir ">"))
-             (command "resetrails; bundle exec guard"))
-        (gusev-shell-run dir command buffer-name))
-    (message (concat "Can't find Guardfile inside " dir))))
-
-(defun gusev-shell-run (dir command buffer-name)
-  (let* ((buffer (shell buffer-name)))
-    (with-current-buffer buffer
-      (shell-cd dir)
-      (comint-send-string buffer (concat "cd " dir "; " command "\n")))))
-
-(defun gusev-projectile-rails-run-test-at-cursor (command)
-  "Invoke test at cursor using `async-shell-command' in the project's root."
-  (interactive
-   (list
-    (read-shell-command "Run test at point: "
-                        (concat "./bin/rails test " (file-relative-name (buffer-file-name) (projectile-project-root))))))
-  (let* ((output-buffer-name "*projectile-rails-test*")
-         error-buffer
-         (output-buffer (get-buffer output-buffer-name)))
-    (save-some-buffers +1)
-    (and output-buffer (kill-buffer output-buffer))
-    (projectile-with-default-dir (projectile-ensure-project (projectile-project-root))         
-      (async-shell-command command output-buffer-name error-buffer))
-    (setq inf-ruby-buffer output-buffer-name)
-    (push (get-buffer output-buffer-name) inf-ruby-buffers)))
-
-
-(prelude-require-package 'projectile-rails)
-(add-hook 'projectile-mode-hook 'projectile-rails-on)
-(setq projectile-rails-keymap-prefix (kbd "C-c l"))
-(add-hook 'ruby-mode-hook
-          (lambda ()
-            (interactive)
-            (local-set-key (kbd "C-c C-c") 'gusev-projectile-rails-run-test-at-cursor)))
 
 (setq ruby-deep-indent-paren '(?\( t))
 
@@ -100,6 +54,7 @@
 (defun ag-set-inf-ruby-buffer-to-current ()
   "Sets `inf-ruby-buffer' variable to current buffer"
   (interactive)
+  (push (get-buffer output-buffer-name) inf-ruby-buffers)
   (setq inf-ruby-buffer (buffer-name (current-buffer))))
 
 ;; Monkey patch to avoid binding changing when sending region for

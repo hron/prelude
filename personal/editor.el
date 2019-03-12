@@ -25,9 +25,6 @@
 (global-set-key (kbd "C-d") 'crux-duplicate-current-line-or-region)
 (global-set-key (kbd "C-S-d") 'crux-duplicate-and-comment-current-line-or-region)
 (global-set-key (kbd "RET") 'indent-new-comment-line)
-(global-set-key (kbd "M-S-<left>") 'pop-global-mark) 
-
-(global-set-key (kbd "C-s") (lambda () (interactive) (save-some-buffers +1)))
 
 (electric-indent-mode +1)
 (electric-pair-mode +1)
@@ -195,12 +192,14 @@
   '(company-mode
     editorconfig-mode
     projectile-mode
+    projectile-rails-mode
     super-save-mode
     which-key-mode
     helm-mode
     prelude-mode
     compilation-in-progress
     robe-mode
+    global-robe-mode
     flycheck-mode
     flyspell-mode
     beacon-mode)

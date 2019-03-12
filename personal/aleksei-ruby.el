@@ -79,6 +79,7 @@
     (setq inf-ruby-buffer output-buffer-name)
     (push (get-buffer output-buffer-name) inf-ruby-buffers)))
 
+
 (prelude-require-package 'projectile-rails)
 (add-hook 'projectile-mode-hook 'projectile-rails-on)
 (setq projectile-rails-keymap-prefix (kbd "C-c l"))
@@ -93,7 +94,7 @@
                             (interactive)
                             (eldoc-mode -1)))
 
-(add-hook 'ruby-mode-hook (lambda () (local-set-key (kbd "C-w") 'ruby-send-region)))
+(add-hook 'ruby-mode-hook (lambda () (local-set-key (kbd "M-e") 'ruby-send-region)))
 
 (defun ag-set-inf-ruby-buffer-to-current ()
   "Sets `inf-ruby-buffer' variable to current buffer"

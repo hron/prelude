@@ -29,6 +29,7 @@
 
 (global-set-key (kbd "C-s") (lambda () (interactive) (save-some-buffers +1)))
 
+(electric-indent-mode +1)
 (electric-pair-mode +1)
 
 (define-key helm-map (kbd "<escape>") 'helm-keyboard-quit)
@@ -46,12 +47,12 @@
 
 (add-hook 'prog-mode-hook 'turn-off-smartparens-mode t)
 (add-hook 'prog-mode-hook (lambda () (local-set-key (kbd "C-/") 'comment-dwim)))
-(add-hook 'prog-mode-hook 'electric-indent-local-mode)
 
 (add-hook 'emacs-lisp-mode-hook 'turn-off-smartparens-mode t)
 (add-hook 'emacs-lisp-mode-hook 'turn-off-smartparens-strict-mode t)
 (add-hook 'emacs-lisp-mode-hook 
           (lambda () (local-set-key (kbd "C-b") 'elisp-slime-nav-find-elisp-thing-at-point)))
+(add-hook 'emacs-lisp-mode-hook (lambda () (electric-indent-local-mode -1)))
 
 (define-key minibuffer-inactive-mode-map (kbd "<escape>") 'keyboard-quit)
 
@@ -118,7 +119,6 @@
 (setq desktop-save 'ask-if-new)
 (desktop-save-mode 1)
 
-(electric-indent-mode +1)
 ;; Turn off electric indent in haml mode
 (add-hook 'haml-mode-hook
           (lambda () (set (make-local-variable 'electric-indent-mode) nil)))
@@ -188,32 +188,8 @@
 (when (equal system-type 'windows-nt)
   (global-flycheck-mode -1))
 
-
-(setq company-active-map
-      (let ((keymap (make-sparse-keymap)))
-        (define-key keymap "<escape>" 'company-abort)
-        (define-key keymap "\C-g" 'company-abort)
-        (define-key keymap (kbd "M-n") 'company-select-next)
-        (define-key keymap (kbd "M-p") 'company-select-previous)
-        (define-key keymap (kbd "<down>") 'company-select-next-or-abort)
-        (define-key keymap (kbd "<up>") 'company-select-previous-or-abort)
-        (define-key keymap [remap scroll-up-command] 'company-next-page)
-        (define-key keymap [remap scroll-down-command] 'company-previous-page)
-        (define-key keymap [down-mouse-1] 'ignore)
-        (define-key keymap [down-mouse-3] 'ignore)
-        (define-key keymap [mouse-1] 'company-complete-mouse)
-        (define-key keymap [mouse-3] 'company-select-mouse)
-        (define-key keymap [up-mouse-1] 'ignore)
-        (define-key keymap [up-mouse-3] 'ignore)
-        (define-key keymap [tab] 'company-complete-selection)
-        (define-key keymap (kbd "TAB") 'company-complete-selection)
-        (define-key keymap (kbd "<f1>") 'company-show-doc-buffer)
-        (define-key keymap (kbd "C-h") 'company-show-doc-buffer)
-        (define-key keymap "\C-w" 'company-show-location)
-        (define-key keymap "\C-F" 'company-filter-candidates)
-        (dotimes (i 10)
-          (define-key keymap (read-kbd-macro (format "M-%d" i)) 'company-complete-number))
-        keymap))
+(add-hook 'company-completion-started-hook
+          (lambda (arg) (local-set-key (kbd "<escape>") 'company-abort)))
 
 (defvar gusev-diminish-modes
   '(company-mode
@@ -226,7 +202,8 @@
     compilation-in-progress
     robe-mode
     flycheck-mode
-    flyspell-mode)
+    flyspell-mode
+    beacon-mode)
  "A list of minor modes to hide in mode-line")
 (mapc 'diminish gusev-diminish-modes)
 

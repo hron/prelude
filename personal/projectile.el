@@ -1,6 +1,6 @@
 ;; (prelude-require-package 'ag)
 
-(defun gusev-projectile-rerun ()
+(defun gusev-projectile-rerun ()  
   (interactive)
   "Rerun the latest shell command."
   (gusev-projectile-rails-run-test-at-cursor (first shell-command-history)))

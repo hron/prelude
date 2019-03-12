@@ -54,7 +54,7 @@
 (defun ag-set-inf-ruby-buffer-to-current ()
   "Sets `inf-ruby-buffer' variable to current buffer"
   (interactive)
-  (push (get-buffer output-buffer-name) inf-ruby-buffers)
+  (push (current-buffer) inf-ruby-buffers)
   (setq inf-ruby-buffer (buffer-name (current-buffer))))
 
 ;; Monkey patch to avoid binding changing when sending region for

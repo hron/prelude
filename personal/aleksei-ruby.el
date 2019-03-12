@@ -44,6 +44,7 @@
                             (local-set-key (kbd "C-b") 'gusev-robe-jump)
                             (local-set-key (kbd "M-.") 'gusev-robe-jump)
                             (local-set-key (kbd "<f1>") 'robe-doc)
+                            (local-set-key (kbd "C-i") 'robe-doc)
                             (eldoc-mode +1)))
 
 (add-to-list 'auto-mode-alist '("\\.prawn\\'" . ruby-mode))

@@ -6,6 +6,13 @@
 
 (eval-after-load 'projectile
   '(progn
+     (defun projectile-run-compilation (cmd)
+       "Run external or Elisp compilation command CMD."
+       (message "allo")
+       (if (functionp cmd)
+           (funcall cmd)
+         (compile cmd t)))
+
      (define-key projectile-mode-map (kbd "C-c t") 'projectile-toggle-between-implementation-and-test)
      (define-key projectile-mode-map (kbd "C-S-t") 'projectile-toggle-between-implementation-and-test)
      (define-key projectile-mode-map (kbd "C-n") 'projectile-find-file)

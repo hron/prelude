@@ -8,11 +8,16 @@
   '(progn
      (defun projectile-run-compilation (cmd)
        "Run external or Elisp compilation command CMD."
-       (message "allo")
        (if (functionp cmd)
            (funcall cmd)
          (compile cmd t)))
 
+     (defun projectile-rails-test-at-point-cmd ()
+       (let* ((current-file-relative-path
+               (file-relative-name (buffer-file-name) (projectile-project-root)))
+              (command (concat "./bin/rails test " current-file-relative-path)))         
+         (compile (projectile-read-command "Test command: " command) t)))
+     
      (define-key projectile-mode-map (kbd "C-c t") 'projectile-toggle-between-implementation-and-test)
      (define-key projectile-mode-map (kbd "C-S-t") 'projectile-toggle-between-implementation-and-test)
      (define-key projectile-mode-map (kbd "C-n") 'projectile-find-file)

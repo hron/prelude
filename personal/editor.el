@@ -185,8 +185,8 @@
 (when (equal system-type 'windows-nt)
   (global-flycheck-mode -1))
 
-(add-hook 'company-completion-started-hook
-          (lambda (arg) (local-set-key (kbd "<escape>") 'company-abort)))
+(require 'company)
+(define-key company-active-map (kbd "<escape>") 'company-abort)
 
 (defvar gusev-diminish-modes
   '(company-mode

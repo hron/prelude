@@ -12,10 +12,26 @@
            (funcall cmd)
          (compile cmd t)))
 
-     (defun projectile-rails-test-at-point-cmd ()
+     (defun projectile--minitest-extract-current-test-name-str ()
+       (save-excursion
+         (save-restriction
+           (widen)
+           (end-of-line)
+           (or (re-search-backward "\\(test\\) ['\"]\\([^\"]+?\\)['\"]" nil t)
+               (re-search-backward "def \\(test\\)_\\([_A-Za-z0-9]+\\)" nil t)
+               (re-search-backward "\\(it\\) '\\([^\"]+?\\)'" nil t)
+               (re-search-backward "\\(it\\) \"\\([^\"]+?\\)\"" nil t)))))
+     
+     (defun projectile-rails-minitest-test-at-point-cmd ()
        (let* ((current-file-relative-path
                (file-relative-name (buffer-file-name) (projectile-project-root)))
               (command (concat "./bin/rails test " current-file-relative-path)))         
+         (when (projectile--minitest-extract-current-test-name-str)
+           (setq command
+                 (concat command
+                         " --name=\"/"
+                         (format "%s" (replace-regexp-in-string "[#:]" "." (match-string 2)))
+                         "/\"")))
          (compile (projectile-read-command "Test command: " command) t)))
      
      (define-key projectile-mode-map (kbd "C-c t") 'projectile-toggle-between-implementation-and-test)

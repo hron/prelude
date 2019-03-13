@@ -45,7 +45,7 @@
  '(prelude-whitespace nil)
  '(safe-local-variable-values
    '((eval progn
-           (setq projectile-project-test-cmd #'projectile-rails-test-at-point-cmd))
+           (setq projectile-project-test-cmd #'projectile-rails-minitest-test-at-point-cmd))
      (mangle-whitespace . t)
      (org-not-done-heading-regexp . "^\\(\\*+\\)\\(?: +\\(TODO\\|George\\|Nila\\|Matt\\|Shawn\\|Lena\\|Ded\\|Sasha\\|Mikhaylovsky\\|Pavel\\|Slava\\|Sergey\\|Shostak\\|Mama\\|Mikhnovets\\|WAIT\\)\\)\\(?: +\\(.*?\\)\\)?[	]*$")
      (encoding . utf-8)

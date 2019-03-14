@@ -17,10 +17,8 @@
          (save-restriction
            (widen)
            (end-of-line)
-           (or (re-search-backward "\\(test\\) ['\"]\\([^\"]+?\\)['\"]" nil t)
-               (re-search-backward "def \\(test\\)_\\([_A-Za-z0-9]+\\)" nil t)
-               (re-search-backward "\\(it\\) '\\([^\"]+?\\)'" nil t)
-               (re-search-backward "\\(it\\) \"\\([^\"]+?\\)\"" nil t)))))
+           (or (re-search-backward "\\(test\\|def test\\|it\\) ['\"]\\(.+\\)['\"]" nil t)
+               ))))
      
      (defun projectile-rails-minitest-test-at-point-cmd ()
        (let ((command "bin/rails test"))

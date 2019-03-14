@@ -17,15 +17,15 @@
          (save-restriction
            (widen)
            (end-of-line)
-           (or (re-search-backward "\\(test\\) ['\"]\\([^\"]+?\\)['\"]" nil t)
-               (re-search-backward "def \\(test\\)_\\([_A-Za-z0-9]+\\)" nil t)
-               (re-search-backward "\\(it\\) '\\([^\"]+?\\)'" nil t)
-               (re-search-backward "\\(it\\) \"\\([^\"]+?\\)\"" nil t)))))
+           (or (re-search-backward "\\(test\\|def test\\|it\\) ['\"]\\(.+\\)['\"]" nil t)
+               ))))
      
      (defun projectile-rails-minitest-test-at-point-cmd ()
-       (let* ((current-file-relative-path
-               (file-relative-name (buffer-file-name) (projectile-project-root)))
-              (command (concat "./bin/rails test " current-file-relative-path)))         
+       (let ((command "bin/rails test"))
+         (when (buffer-file-name)
+           (setq command (concat command " " (file-relative-name
+                                              (buffer-file-name)
+                                              (projectile-project-root)))))
          (when (projectile--minitest-extract-current-test-name-str)
            (setq command
                  (concat command

@@ -40,7 +40,7 @@
  '(magit-push-always-verify nil)
  '(magit-use-overlays nil)
  '(package-selected-packages
-   '(ruby-electric ruby-additional "back-button" powerline helm-dash web-beautify textile-mode evernote-mode edit-server cmake-mode zenburn-theme yari yaml-mode web-mode volatile-highlights undo-tree solarized-theme smex smartrep smartparens slime scss-mode sass-mode ruby-tools robe rainbow-mode rainbow-delimiters projectile-rails ov operate-on-number move-text markdown-mode magit json-mode js2-mode ido-ubiquitous helm-projectile helm-descbinds helm-ag haskell-mode guru-mode grizzl god-mode gitignore-mode gitconfig-mode git-timemachine gist geiser flycheck flx-ido feature-mode expand-region elisp-slime-nav easy-kill discover-my-major diminish diff-hl csv-mode company-anaconda coffee-mode cider browse-kill-ring anzu ag ace-window ace-jump-buffer))
+   '("back-button" powerline helm-dash web-beautify textile-mode evernote-mode edit-server cmake-mode zenburn-theme yari yaml-mode web-mode volatile-highlights undo-tree solarized-theme smex smartrep smartparens slime scss-mode sass-mode ruby-tools robe rainbow-mode rainbow-delimiters projectile-rails ov operate-on-number move-text markdown-mode magit json-mode js2-mode ido-ubiquitous helm-projectile helm-descbinds helm-ag haskell-mode guru-mode grizzl god-mode gitignore-mode gitconfig-mode git-timemachine gist geiser flycheck flx-ido feature-mode expand-region elisp-slime-nav easy-kill discover-my-major diminish diff-hl csv-mode company-anaconda coffee-mode cider browse-kill-ring anzu ag ace-window ace-jump-buffer))
  '(pdf-view-midnight-colors '("#DCDCCC" . "#383838"))
  '(prelude-whitespace nil)
  '(safe-local-variable-values
@@ -98,4 +98,5 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#3F3F3F" :foreground "#DCDCCC" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 140 :width normal :foundry "DAMA" :family "Ubuntu Mono")))))
+ '(default ((t (:inherit nil :stipple nil :background "#3F3F3F" :foreground "#DCDCCC" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 140 :width normal :foundry "DAMA" :family "Ubuntu Mono"))))
+ '(mode-line ((t (:background "#2B2B2B" :foreground "#8FB28F" :box (:line-width -1 :style released-button) :weight normal :height 0.95 :width condensed)))))

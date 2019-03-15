@@ -34,7 +34,7 @@
 
 (prelude-require-package 'robe)
 (add-hook 'ruby-mode-hook 'robe-mode)
-
+(diminish 'robe-mode)
 (add-hook 'robe-mode-hook (lambda ()
                             (local-set-key (kbd "C-b") 'robe-jump)
                             (local-set-key (kbd "<f1>") 'robe-doc)

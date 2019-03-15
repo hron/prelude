@@ -1,6 +1,7 @@
 ;; (prelude-require-package 'ag)
 
 (prelude-require-package 'projectile-rails)
+(diminish 'projectile-rails-mode)
 (add-hook 'projectile-mode-hook 'projectile-rails-on)
 (setq projectile-rails-keymap-prefix (kbd "C-c l"))
 

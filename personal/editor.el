@@ -202,8 +202,10 @@
     global-robe-mode
     flycheck-mode
     flyspell-mode
-    beacon-mode)
+    beacon-mode
+    subword-mode)
  "A list of minor modes to hide in mode-line")
+(add-hook 'subword-mode-hook (lambda () (diminish 'subword-mode)))
 (mapc 'diminish gusev-diminish-modes)
 
 (require 'prelude-packages)

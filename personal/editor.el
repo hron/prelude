@@ -189,6 +189,13 @@
 (require 'company)
 (define-key company-active-map (kbd "<escape>") 'company-abort)
 
+(define-key isearch-mode-map (kbd "S-<return>") 'isearch-repeat-backward)
+(define-key isearch-mode-map [return] 'isearch-repeat-forward)
+(define-key isearch-mode-map (kbd "<escape>") 'isearch-exit)
+(define-key minibuffer-local-isearch-map (kbd "<escape>") 'exit-minibuffer)
+(define-key minibuffer-local-isearch-map (kbd "C-f") 'isearch-forward-exit-minibuffer)
+(define-key minibuffer-local-isearch-map (kbd "C-r") 'isearch-backward-exit-minibuffer)
+
 (defvar gusev-diminish-modes
   '(company-mode
     editorconfig-mode

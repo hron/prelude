@@ -50,6 +50,7 @@
 (add-hook 'emacs-lisp-mode-hook 
           (lambda () (local-set-key (kbd "C-b") 'elisp-slime-nav-find-elisp-thing-at-point)))
 (add-hook 'emacs-lisp-mode-hook (lambda () (electric-indent-local-mode -1)))
+(remove-hook 'minibuffer-setup-hook 'conditionally-enable-smartparens-mode)
 
 (define-key minibuffer-inactive-mode-map (kbd "<escape>") 'keyboard-quit)
 

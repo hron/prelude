@@ -44,5 +44,5 @@
 
 (global-set-key (kbd "C-w") 'kill-this-buffer)
 
-(global-set-key (kbd "M-S-<left>") 'previous-buffer) 
+(global-set-key (kbd "M-S-<left>") 'pop-global-mark)
 (global-set-key (kbd "M-S-<right>") 'next-buffer) 

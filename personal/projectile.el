@@ -22,7 +22,8 @@
                ))))
      
      (defun projectile-rails-minitest-test-at-point-cmd ()
-       (let ((command "bin/rails test"))
+       (let ((command "bin/rails test")
+             command-to-execute)
          (when (buffer-file-name)
            (setq command (concat command " " (file-relative-name
                                               (buffer-file-name)
@@ -33,7 +34,11 @@
                          " --name=\"/"
                          (format "%s" (replace-regexp-in-string "[#:]" "." (match-string 2)))
                          "/\"")))
-         (compile (projectile-read-command "Test command: " command) t)))
+         (setq command-to-execute
+               (if compilation-read-command
+                   (projectile-read-command "Test command: " command)
+                 (car compile-history)))
+         (compile command-to-execute t)))
      
      (define-key projectile-mode-map (kbd "C-c t") 'projectile-toggle-between-implementation-and-test)
      (define-key projectile-mode-map (kbd "C-S-t") 'projectile-toggle-between-implementation-and-test)

@@ -40,7 +40,7 @@
  '(magit-push-always-verify nil)
  '(magit-use-overlays nil)
  '(package-selected-packages
-   '("back-button" powerline helm-dash web-beautify textile-mode evernote-mode edit-server cmake-mode zenburn-theme yari yaml-mode web-mode volatile-highlights undo-tree solarized-theme smex smartrep smartparens slime scss-mode sass-mode ruby-tools robe rainbow-mode rainbow-delimiters projectile-rails ov operate-on-number move-text markdown-mode magit json-mode js2-mode ido-ubiquitous helm-projectile helm-descbinds helm-ag haskell-mode guru-mode grizzl god-mode gitignore-mode gitconfig-mode git-timemachine gist geiser flycheck flx-ido feature-mode expand-region elisp-slime-nav easy-kill discover-my-major diminish diff-hl csv-mode company-anaconda coffee-mode cider browse-kill-ring anzu ag ace-window ace-jump-buffer))
+   '(ipython-shell-send use-package "back-button" powerline helm-dash web-beautify textile-mode evernote-mode edit-server cmake-mode zenburn-theme yari yaml-mode web-mode volatile-highlights undo-tree solarized-theme smex smartrep smartparens slime scss-mode sass-mode ruby-tools robe rainbow-mode rainbow-delimiters projectile-rails ov operate-on-number move-text markdown-mode magit json-mode js2-mode ido-ubiquitous helm-projectile helm-descbinds helm-ag haskell-mode guru-mode grizzl god-mode gitignore-mode gitconfig-mode git-timemachine gist geiser flycheck flx-ido feature-mode expand-region elisp-slime-nav easy-kill discover-my-major diminish diff-hl csv-mode company-anaconda coffee-mode cider browse-kill-ring anzu ag ace-window ace-jump-buffer))
  '(pdf-view-midnight-colors '("#DCDCCC" . "#383838"))
  '(prelude-whitespace nil)
  '(safe-local-variable-values

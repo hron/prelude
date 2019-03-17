@@ -166,8 +166,6 @@
              (local-set-key (kbd "C-w") 'kill-this-buffer)
              (local-set-key (kbd "S-SPC") 'helm-projectile)))
 
-(define-key isearch-mode-map "\C-f" 'isearch-repeat-forward)
-
 (add-to-list 'tramp-default-proxies-alist
              '(nil "\\`root\\'" "/ssh:%h:"))
 (add-to-list 'tramp-default-proxies-alist
@@ -189,12 +187,17 @@
 (require 'company)
 (define-key company-active-map (kbd "<escape>") 'company-abort)
 
+(setq search-exit-option 'edit)
+(define-key isearch-mode-map "\C-f" 'isearch-repeat-forward)
 (define-key isearch-mode-map (kbd "S-<return>") 'isearch-repeat-backward)
 (define-key isearch-mode-map [return] 'isearch-repeat-forward)
 (define-key isearch-mode-map (kbd "<escape>") 'isearch-exit)
+(define-key isearch-mode-map (kbd "C-v") 'isearch-yank-kill)
 (define-key minibuffer-local-isearch-map (kbd "<escape>") 'exit-minibuffer)
 (define-key minibuffer-local-isearch-map (kbd "C-f") 'isearch-forward-exit-minibuffer)
 (define-key minibuffer-local-isearch-map (kbd "C-r") 'isearch-backward-exit-minibuffer)
+(define-key minibuffer-local-isearch-map (kbd "C-v") 'isearch-yank-kill)
+;; (remove-hook 'isearch-mode-hook 'isearch-yank-kill)
 
 (defvar gusev-diminish-modes
   '(company-mode

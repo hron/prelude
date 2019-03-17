@@ -5,7 +5,10 @@
 
 (prelude-require-package 'ipython-shell-send)
 (use-package ipython-shell-send
-  :bind (:map python-mode-map ([remap python-shell-send-region] . ipython-shell-send-region)))
+  :bind (:map python-mode-map
+              ([remap python-shell-send-region] . ipython-shell-send-region)
+              ([remap python-shell-send-buffer] . ipython-shell-send-buffer)
+              ([remap python-shell-send-defun] . ipython-shell-send-defun)))
 
 (use-package anaconda-mode
   :bind (:map anaconda-mode-map

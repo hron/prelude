@@ -14,3 +14,6 @@
 
 (prelude-require-package 'company-anaconda)
 (use-package company-anaconda)
+
+(prelude-require-package 'conda)
+(use-package conda)

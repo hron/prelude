@@ -216,5 +216,7 @@
 (add-hook 'subword-mode-hook (lambda () (diminish 'subword-mode)))
 (mapc 'diminish gusev-diminish-modes)
 
+(define-key comint-mode-map (kbd "C-r") 'comint-history-isearch-backward)
+
 (require 'prelude-packages)
 

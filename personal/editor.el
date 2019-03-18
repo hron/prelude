@@ -1,3 +1,4 @@
+(prelude-require-package 'use-package)
 (cua-mode +1)
 
 (global-set-key (kbd "M-<down>") 'other-window)
@@ -9,9 +10,7 @@
 (global-unset-key (kbd "S-<left>"))
 (global-unset-key (kbd "S-<down>"))
 
-(global-set-key (kbd "C-e") 'helm-mini)
 (global-set-key (kbd "C-S-z") 'undo-tree-redo)
-(global-set-key (kbd "C-p") help-map)
 (global-set-key (kbd "C-h") 'er/expand-region)
 (global-set-key (kbd "C-S-h") (lambda () (interactive) (er/expand-region -1)))
 (global-set-key (kbd "<home>") 'crux-move-beginning-of-line)
@@ -29,10 +28,29 @@
 (electric-indent-mode +1)
 (electric-pair-mode +1)
 
-(define-key helm-map (kbd "<escape>") 'helm-keyboard-quit)
-(define-key helm-map (kbd "C-p") help-map)
-
-(define-key helm-moccur-mode-map (kbd "RET") 'helm-moccur-mode-goto-line-ow)
+(prelude-require-package 'helm)
+(use-package helm
+  :init
+  (setq helm-semantic-fuzzy-match t
+        helm-imenu-fuzzy-match    t
+        helm-M-x-fuzzy-match      t)
+  (setq helm-truncate-lines t)
+  (when (executable-find "ack-grep")
+    (setq helm-grep-default-command "ack-grep -Hn --no-group --no-color %e %p %f"
+          helm-grep-default-recurse-command "ack-grep -H --no-group --no-color %e %p %f"))
+  ;; (when (executable-find "ag")
+  ;;   (setq helm-grep-default-command "ag --nocolor --nogroup %p %f"
+  ;;         helm-grep-default-recurse-command "ag --nocolor --nogroup %p %f"))
+  :bind (("C-e" . helm-mini)
+         :map helm-map
+         ("<tab>" . helm-execute-persistent-action) ; rebind tab to run persistent action
+         ("C-i" . helm-execute-persistent-action) ; make TAB works in terminal
+         ("C-a" . helm-select-action) ; list actions using C-a
+         ("C-z" . undo-tree-undo)
+         ("<escape>" . helm-keyboard-quit)
+         ("C-p" . help-map)
+         :map helm-moccur-mode-map
+         ("RET" . helm-moccur-mode-goto-line-ow)))
 
 (global-set-key (kbd "C-M-<down>") 'next-error)
 (global-set-key (kbd "C-M-<up>") (lambda () (interactive) (next-error -1)))
@@ -119,31 +137,12 @@
           (lambda () (set (make-local-variable 'electric-indent-mode) nil)))
 
 (setq-default truncate-lines t)
-(setq helm-truncate-lines t)
 
 (setq prelude-auto-save nil)
 (add-hook 'markdown-mode-hook 'turn-on-visual-line-mode)
 
 (setq comment-empty-lines t)
 
-(when (executable-find "ack-grep")
-  (setq helm-grep-default-command "ack-grep -Hn --no-group --no-color %e %p %f"
-        helm-grep-default-recurse-command "ack-grep -H --no-group --no-color %e %p %f"))
-
-;; (when (executable-find "ag")
-;;   (setq helm-grep-default-command "ag --nocolor --nogroup %p %f"
-;;         helm-grep-default-recurse-command "ag --nocolor --nogroup %p %f"))
-
-(setq helm-semantic-fuzzy-match t
-      helm-imenu-fuzzy-match    t)
-
-(prelude-require-package 'helm)
-(require 'helm)
-(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
-(define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
-(define-key helm-map (kbd "C-a")  'helm-select-action) ; list actions using C-a
-(define-key helm-map (kbd "C-z") 'undo-tree-undo)
-(define-key helm-map (kbd "C-v") 'cua-paste)
 
 (require 'helm-files)
 (define-key helm-find-files-map (kbd "C-<backspace>") nil)
@@ -206,7 +205,7 @@
     flyspell-mode
     beacon-mode
     subword-mode)
- "A list of minor modes to hide in mode-line")
+  "A list of minor modes to hide in mode-line")
 (add-hook 'subword-mode-hook (lambda () (diminish 'subword-mode)))
 (mapc 'diminish gusev-diminish-modes)
 

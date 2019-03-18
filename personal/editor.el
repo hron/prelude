@@ -150,10 +150,6 @@
 (define-key helm-find-files-map (kbd "C-z") 'undo-tree-undo)
 (define-key helm-read-file-map (kbd "C-<backspace>") nil)
 
-(prelude-require-package 'helm-projectile)
-(require 'helm-projectile)
-(define-key helm-projectile-find-file-map (kbd "C-<backspace>") nil)
-
 ;; Magit rebinds global keys, so we have to workaround this by making
 ;; local key bindings.
 (add-hook 'magit-mode-hook

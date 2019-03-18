@@ -20,7 +20,7 @@
            (end-of-line)
            (or (re-search-backward "\\(test\\|def test\\|it\\) ['\"]\\(.+\\)['\"]" nil t)
                ))))
-     
+
      (defun projectile-rails-minitest-test-at-point-cmd ()
        (let ((command "bin/rails test")
              command-to-execute)
@@ -39,9 +39,16 @@
                    (projectile-read-command "Test command: " command)
                  (car compile-history)))
          (compile command-to-execute t)))
-     
+
      (define-key projectile-mode-map (kbd "C-c t") 'projectile-toggle-between-implementation-and-test)
      (define-key projectile-mode-map (kbd "C-S-t") 'projectile-toggle-between-implementation-and-test)
      (define-key projectile-mode-map (kbd "C-n") 'projectile-find-file)
      (define-key projectile-mode-map (kbd "C-S-n") 'projectile-find-file-dwim)
      (define-key projectile-mode-map (kbd "M-r") 'projectile-repeat-last-command)))
+
+(prelude-require-package 'helm-projectile)
+(use-package helm-projectile
+  :bind (:map helm-projectile-find-file-map
+              ("C-<backspace>" . nil)
+              :map projectile-mode-map
+              ("C-n" . helm-projectile)))

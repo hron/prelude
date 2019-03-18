@@ -88,7 +88,6 @@
 (setq comint-scroll-to-bottom-on-output 'others)
 ;; for zsh extended history...
 (setq comint-input-ring-separator "\\(\n\\|:[[:space:]]+[[:digit:]]+:[[:digit:]]+;\\)")
-(add-hook 'compilation-mode-hook '(lambda () (local-set-key "\C-cg" 'ag)))
 
 (require 'desktop)
 (setq desktop-globals-to-save

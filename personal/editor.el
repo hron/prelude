@@ -47,7 +47,7 @@
 
 (add-hook 'emacs-lisp-mode-hook 'turn-off-smartparens-mode t)
 (add-hook 'emacs-lisp-mode-hook 'turn-off-smartparens-strict-mode t)
-(add-hook 'emacs-lisp-mode-hook 
+(add-hook 'emacs-lisp-mode-hook
           (lambda () (local-set-key (kbd "C-b") 'elisp-slime-nav-find-elisp-thing-at-point)))
 (add-hook 'emacs-lisp-mode-hook (lambda () (electric-indent-local-mode -1)))
 (remove-hook 'minibuffer-setup-hook 'conditionally-enable-smartparens-mode)
@@ -221,5 +221,6 @@
 
 (define-key comint-mode-map (kbd "C-r") 'comint-history-isearch-backward)
 
-(require 'prelude-packages)
+(setq whitespace-line-column nil)
 
+(require 'prelude-packages)

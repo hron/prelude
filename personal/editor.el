@@ -35,13 +35,34 @@
   (setq helm-semantic-fuzzy-match t
         helm-imenu-fuzzy-match    t
         helm-M-x-fuzzy-match      t)
-  (setq helm-truncate-lines t)
   (when (executable-find "ack-grep")
     (setq helm-grep-default-command "ack-grep -Hn --no-group --no-color %e %p %f"
           helm-grep-default-recurse-command "ack-grep -H --no-group --no-color %e %p %f"))
   ;; (when (executable-find "ag")
   ;;   (setq helm-grep-default-command "ag --nocolor --nogroup %p %f"
   ;;         helm-grep-default-recurse-command "ag --nocolor --nogroup %p %f"))
+  :config
+  (require 'subr-x)
+  (defvar helm-source-emacs-process
+    (helm-build-sync-source "Emacs Process"
+      :init (lambda ()
+              (let (tabulated-list-use-header-line)
+                (list-processes--refresh)))
+      :candidates (lambda () (mapcar
+                              (lambda (process)
+                                (concat (process-name process)
+                                        " ["
+                                        (string-join (process-command process) " ")
+                                        "] "))
+                              (process-list)))
+      :persistent-action (lambda (elm)
+                           (delete-process (get-process elm))
+                           (helm-delete-current-selection))
+      :persistent-help "Kill Process"
+      :action (helm-make-actions "Kill Process"
+                                 (lambda (_elm)
+                                   (cl-loop for p in (helm-marked-candidates)
+                                            do (delete-process (get-process p)))))))
   :bind (("C-e" . helm-mini)
          ("C-<f2>" . helm-list-emacs-process)
          :map helm-map

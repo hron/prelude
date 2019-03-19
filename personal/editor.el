@@ -43,6 +43,7 @@
   ;;   (setq helm-grep-default-command "ag --nocolor --nogroup %p %f"
   ;;         helm-grep-default-recurse-command "ag --nocolor --nogroup %p %f"))
   :bind (("C-e" . helm-mini)
+         ("C-<f2>" . helm-list-emacs-process)
          :map helm-map
          ("<tab>" . helm-execute-persistent-action) ; rebind tab to run persistent action
          ("C-i" . helm-execute-persistent-action) ; make TAB works in terminal

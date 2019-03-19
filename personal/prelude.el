@@ -5,6 +5,7 @@
 (use-package whitespace
   :init
   (setq whitespace-line-column nil)
+  (setq whitespace-style '())
   :diminish whitespace-mode)
 
 (setq dired-listing-switches "-ahl --group-directories-first")

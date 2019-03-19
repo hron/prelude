@@ -28,6 +28,8 @@
 (electric-indent-mode +1)
 (electric-pair-mode +1)
 
+(define-key global-map (kbd "C-p")  help-map)
+
 (prelude-require-package 'helm)
 (use-package helm
   :init
@@ -48,7 +50,6 @@
          ("C-a" . helm-select-action) ; list actions using C-a
          ("C-z" . undo-tree-undo)
          ("<escape>" . helm-keyboard-quit)
-         ("C-p" . help-map)
          :map helm-moccur-mode-map
          ("RET" . helm-moccur-mode-goto-line-ow)))
 

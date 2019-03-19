@@ -104,7 +104,9 @@
 ;; (prelude-require-package 'rspec-mode)
 
 (prelude-require-package 'ruby-electric)
-(add-hook 'ruby-mode-hook 'ruby-electric-mode)
+(use-package ruby-electric
+  :hook (ruby-mode . ruby-electric-mode)
+  :diminish ruby-electric-mode)
 
 (provide 'aleksei-ruby)
 ;;; aleksei-ruby.el ends here

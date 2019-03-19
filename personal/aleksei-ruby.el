@@ -53,7 +53,10 @@
                             (eldoc-mode -1)))
 
 (add-hook 'ruby-mode-hook (lambda () (local-set-key (kbd "M-e") 'ruby-send-region)))
-(add-hook 'ruby-mode-hook (lambda () (setq fill-column 100)))
+(add-hook 'ruby-mode-hook (lambda ()
+                            (setq fill-column 100)
+                            (whitespace-mode -1)
+                            (whitespace-mode +1)))
 
 (defun ag-set-inf-ruby-buffer-to-current ()
   "Sets `inf-ruby-buffer' variable to current buffer"

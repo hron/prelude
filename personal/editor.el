@@ -204,8 +204,6 @@
 
 (define-key comint-mode-map (kbd "C-r") 'comint-history-isearch-backward)
 
-(setq whitespace-line-column nil)
-
 ;; (define-key transient-base-map (kbd "<escape>") 'transient-quit-one)
 (use-package transient
   :bind (:map transient-base-map ("<escape>" . transient-quit-one)))

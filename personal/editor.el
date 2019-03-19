@@ -20,7 +20,6 @@
 
 (global-set-key (kbd "<escape>") 'keyboard-quit)
 
-(global-set-key (kbd "M-`") 'magit-status)
 (global-set-key (kbd "C-d") 'crux-duplicate-current-line-or-region)
 (global-set-key (kbd "C-S-d") 'crux-duplicate-and-comment-current-line-or-region)
 (global-set-key (kbd "RET") 'indent-new-comment-line)
@@ -82,8 +81,6 @@
 (setq-default ediff-window-setup-function 'ediff-setup-windows-plain)
 
 (setq shell-prompt-pattern "^.*[#$%>] *")
-
-(setq magit-status-buffer-switch-function 'switch-to-buffer)
 
 (setq compilation-error-regexp-alist
       '(
@@ -150,12 +147,6 @@
 (define-key helm-find-files-map (kbd "C-z") 'undo-tree-undo)
 (define-key helm-read-file-map (kbd "C-<backspace>") nil)
 
-;; Magit rebinds global keys, so we have to workaround this by making
-;; local key bindings.
-(add-hook 'magit-mode-hook
-          '(lambda ()
-             (local-set-key (kbd "C-w") 'kill-this-buffer)
-             (local-set-key (kbd "S-SPC") 'helm-projectile)))
 
 (add-to-list 'tramp-default-proxies-alist
              '(nil "\\`root\\'" "/ssh:%h:"))
@@ -213,5 +204,15 @@
 (define-key comint-mode-map (kbd "C-r") 'comint-history-isearch-backward)
 
 (setq whitespace-line-column nil)
+
+;; (define-key transient-base-map (kbd "<escape>") 'transient-quit-one)
+(use-package transient
+  :bind (:map transient-base-map ("<escape>" . transient-quit-one)))
+
+(prelude-require-package 'magit)
+(setq magit-status-buffer-switch-function 'switch-to-buffer)
+(global-set-key (kbd "M-`") 'magit-status)
+(use-package magit
+  :bind (:map magit-mode-map ("C-w" . kill-this-buffer)))
 
 (require 'prelude-packages)

@@ -84,6 +84,10 @@
 
 (add-hook 'prog-mode-hook 'turn-off-smartparens-mode t)
 (add-hook 'prog-mode-hook (lambda () (local-set-key (kbd "C-/") 'comment-dwim)))
+(prelude-require-package 'ggtags)
+(use-package ggtags
+  :hook (prog-mode . ggtags-mode))
+
 
 (add-hook 'emacs-lisp-mode-hook 'turn-off-smartparens-mode t)
 (add-hook 'emacs-lisp-mode-hook 'turn-off-smartparens-strict-mode t)

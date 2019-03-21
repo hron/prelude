@@ -33,16 +33,17 @@
 (require 'prelude-packages)
 
 (prelude-require-package 'use-package)
-(prelude-require-package 'robe)
-(add-hook 'ruby-mode-hook 'robe-mode)
-(diminish 'robe-mode)
-(add-hook 'robe-mode-hook (lambda ()
-                            (local-set-key (kbd "C-b") 'robe-jump)
-                            (local-set-key (kbd "<f1>") 'robe-doc)
-                            (local-set-key (kbd "C-i") 'robe-doc)
-                            (eldoc-mode +1)))
-(use-package robe
-  :bind (:map robe-mode-map ("TAB" . 'indent-for-tab-command)))
+;; (prelude-require-package 'robe)
+;; (add-hook 'ruby-mode-hook 'robe-mode)
+;; (diminish 'robe-mode)
+;; (add-hook 'robe-mode-hook (lambda ()
+;;                             (local-set-key (kbd "C-b") 'robe-jump)
+;;                             (local-set-key (kbd "<f1>") 'robe-doc)
+;;                             (local-set-key (kbd "C-i") 'robe-doc)
+;;                             (eldoc-mode +1)))
+;; (use-package robe
+;;   :bind (:map robe-mode-map ("TAB" . 'indent-for-tab-command)))
+
 
 (add-to-list 'auto-mode-alist '("\\.prawn\\'" . ruby-mode))
 

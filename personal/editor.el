@@ -222,9 +222,12 @@
     flycheck-mode
     flyspell-mode
     beacon-mode
-    subword-mode)
+    subword-mode
+    abbrev-mode)
   "A list of minor modes to hide in mode-line")
 (add-hook 'subword-mode-hook (lambda () (diminish 'subword-mode)))
+(add-hook 'abbrev-mode-hook (lambda () (diminish 'abbrev-mode)))
+(add-hook 'dired-omit-mode-hook (lambda () (diminish 'dired-omit-mode)))
 (mapc 'diminish gusev-diminish-modes)
 
 (define-key comint-mode-map (kbd "C-r") 'comint-history-isearch-backward)

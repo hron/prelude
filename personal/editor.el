@@ -88,6 +88,7 @@
 (use-package ggtags
   :hook (prog-mode . ggtags-mode))
 
+(global-eldoc-mode +1)
 
 (add-hook 'emacs-lisp-mode-hook 'turn-off-smartparens-mode t)
 (add-hook 'emacs-lisp-mode-hook 'turn-off-smartparens-strict-mode t)

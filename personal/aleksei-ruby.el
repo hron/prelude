@@ -44,20 +44,16 @@
 ;; (use-package robe
 ;;   :bind (:map robe-mode-map ("TAB" . 'indent-for-tab-command)))
 
-
 (add-to-list 'auto-mode-alist '("\\.prawn\\'" . ruby-mode))
 
 (setq ruby-deep-indent-paren '(?\( t))
-
-(add-hook 'ruby-mode-hook (lambda ()
-                            (interactive)
-                            (eldoc-mode -1)))
 
 (add-hook 'ruby-mode-hook (lambda () (local-set-key (kbd "M-e") 'ruby-send-region)))
 (add-hook 'ruby-mode-hook (lambda ()
                             (setq fill-column 100)
                             (whitespace-mode -1)
                             (whitespace-mode +1)))
+(add-hook 'ruby-mode-hook 'turn-on-eldoc-mode)
 
 (defun ag-set-inf-ruby-buffer-to-current ()
   "Sets `inf-ruby-buffer' variable to current buffer"
